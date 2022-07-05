@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "@codeyourfuture/standard",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "ignorePatterns": [
+    "lib/"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-non-null-assertion": "error",
+    "@typescript-eslint/no-unused-vars": "error"
+  }
+}
