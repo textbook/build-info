@@ -8,7 +8,7 @@ export default class BuildInfo {
 
 	lines(): string[] {
 		return [
-			`Built: ${(this.timestamp())}`,
+			`Built: ${this.timestamp()}`,
 		];
 	}
 
