@@ -6,7 +6,7 @@ export default class BuildInfo {
 
 	constructor(private clock: Clock) {}
 
-	lines(): string[] {
+	async lines(): Promise<string[]> {
 		return [
 			`Built: ${this.timestamp()}`,
 		];

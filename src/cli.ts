@@ -20,7 +20,8 @@ if (!file) {
 
 try {
 	await fs.mkdir(path.dirname(file), { recursive: true });
-	await fs.writeFile(file, buildInfo.lines().join("\n"));
+	const lines = await buildInfo.lines();
+	await fs.writeFile(file, lines.join("\n"));
 	process.exit(ExitCode.OK);
 } catch (err) {
 	console.error(err);
