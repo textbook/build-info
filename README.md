@@ -23,3 +23,11 @@ and then use it in your scripts in `package.json`:
   }
 }
 ```
+
+### Compatibility
+
+The emitted code targets Node 14 and up (see `engines` field in `package.json`).
+
+## Development
+
+Running the tests requires Node 18.
