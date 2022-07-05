@@ -1,0 +1,31 @@
+name: Node.js CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: npm
+          node-version: 18
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+  e2e:
+    runs-on: ubuntu-22.04
+    needs:
+      - test
+    strategy:
+      matrix:
+        node: [14, 16, 18]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: npm
+          node-version: ${{ matrix.node }}
+      - run: npm ci
+      - run: npm run e2e
