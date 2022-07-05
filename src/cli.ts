@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from "node:fs/promises";
+import path from "node:path";
 
 import BuildInfo from "./index.js";
 
@@ -17,9 +18,13 @@ if (!file) {
 	process.exit(ExitCode.ERROR);
 }
 
-fs.writeFile(file, buildInfo.lines().join("\n"))
-	.then(() => process.exit(ExitCode.OK))
-	.catch((err) => {
+(async () => {
+	try {
+		await fs.mkdir(path.dirname(file), { recursive: true });
+		await fs.writeFile(file, buildInfo.lines().join("\n"));
+		process.exit(ExitCode.OK);
+	} catch (err) {
 		console.error(err);
 		process.exit(ExitCode.ERROR);
-	});
+	}
+})();
