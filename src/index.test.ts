@@ -10,7 +10,6 @@ const clock: Clock = {
 const buildInfo = new BuildInfo(clock);
 
 test("includes the current time", () => {
-	assert.deepEqual(buildInfo.lines(), [
-		"Built: 2022-01-02T03:04:05.678Z",
-	]);
+	const [built] = buildInfo.lines();
+	assert.equal(built, "Built: 2022-01-02T03:04:05.678Z");
 });
