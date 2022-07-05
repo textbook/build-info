@@ -18,13 +18,11 @@ if (!file) {
 	process.exit(ExitCode.ERROR);
 }
 
-(async () => {
-	try {
-		await fs.mkdir(path.dirname(file), { recursive: true });
-		await fs.writeFile(file, buildInfo.lines().join("\n"));
-		process.exit(ExitCode.OK);
-	} catch (err) {
-		console.error(err);
-		process.exit(ExitCode.ERROR);
-	}
-})();
+try {
+	await fs.mkdir(path.dirname(file), { recursive: true });
+	await fs.writeFile(file, buildInfo.lines().join("\n"));
+	process.exit(ExitCode.OK);
+} catch (err) {
+	console.error(err);
+	process.exit(ExitCode.ERROR);
+}
