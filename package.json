@@ -2,7 +2,9 @@
   "name": "@textbook/build-info",
   "version": "0.1.0",
   "description": "Generate build information for tracking deployments",
-  "bin": "lib/cli.js",
+  "bin": {
+    "buildinfo": "lib/cli.js"
+  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -13,6 +15,7 @@
   },
   "scripts": {
     "build": "tsc --project ./tsconfig.build.json",
+    "start": "node $npm_package_bin_buildinfo",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
