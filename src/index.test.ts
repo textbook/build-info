@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import BuildInfo, { Clock } from "./index.js";
+import BuildInfo, { type Clock } from "./index.js";
 
 const clock: Clock = {
 	now: () => new Date(Date.UTC(2022, 0, 2, 3, 4, 5, 678)),
