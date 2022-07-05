@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import fs from "node:fs/promises";
 
-import BuildInfo from ".";
+import BuildInfo from "./index.js";
 
 const enum ExitCode {
 	OK = 0,

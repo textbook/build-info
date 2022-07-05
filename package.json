@@ -2,6 +2,7 @@
   "name": "@textbook/build-info",
   "version": "0.1.0",
   "description": "Generate build information for tracking deployments",
+  "type": "module",
   "bin": {
     "buildinfo": "lib/cli.js"
   },
@@ -20,7 +21,7 @@
     "e2e": "npm run start -- 'out.txt'",
     "lint": "eslint .",
     "start": "node $npm_package_bin_buildinfo",
-    "test": "node --require ts-node/register --test src/*.test.ts | faucet"
+    "test": "node --loader ts-node/esm --test src/*.test.ts | faucet"
   },
   "repository": {
     "type": "git",
