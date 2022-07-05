@@ -1,4 +1,6 @@
-import { Clock } from "./clock";
+export interface Clock {
+	now(): Date;
+}
 
 export default class BuildInfo {
 
