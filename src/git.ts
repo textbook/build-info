@@ -19,6 +19,6 @@ export default class GitCli implements Git {
 
 	async changes(): Promise<string[]> {
 		const stdout = await this.run("git status --porcelain");
-		return stdout.split("\n");
+		return stdout ? stdout.split("\n") : [];
 	}
 }

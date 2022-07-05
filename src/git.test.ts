@@ -21,3 +21,11 @@ test("returns the output", async () => {
 
 	assert.deepEqual(changes, ["foo", "bar", "baz"]);
 });
+
+test("doesn't include empty output", async () => {
+	const cli = new GitCli(() => Promise.resolve(""));
+
+	const changes = await cli.changes();
+
+	assert.deepEqual(changes, []);
+});
