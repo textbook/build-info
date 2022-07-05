@@ -1,0 +1,23 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+
+import sinon from "sinon";
+
+import GitCli from "./git.js";
+
+test("gets the git status", async () => {
+	const run = sinon.stub().returns("");
+	const cli = new GitCli(run);
+
+	await cli.changes();
+
+	sinon.assert.calledOnceWithExactly(run, "git status --porcelain");
+});
+
+test("returns the output", async () => {
+	const cli = new GitCli(() => Promise.resolve("foo\nbar\nbaz"));
+
+	const changes = await cli.changes();
+
+	assert.deepEqual(changes, ["foo", "bar", "baz"]);
+});
