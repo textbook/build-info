@@ -8,7 +8,11 @@ export default class BuildInfo {
 
 	lines(): string[] {
 		return [
-			`Built: ${this.clock.now().toISOString()}`,
+			`Built: ${(this.timestamp())}`,
 		];
+	}
+
+	private timestamp(): string {
+		return this.clock.now().toISOString();
 	}
 }
