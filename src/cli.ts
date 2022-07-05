@@ -12,6 +12,11 @@ const buildInfo: BuildInfo = new BuildInfo({ now: () => new Date() });
 
 const [, , file] = process.argv;
 
+if (!file) {
+	console.error("Usage: buildinfo <file>");
+	process.exit(ExitCode.ERROR);
+}
+
 fs.writeFile(file, buildInfo.lines().join("\n"))
 	.then(() => process.exit(ExitCode.OK))
 	.catch((err) => {
