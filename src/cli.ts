@@ -3,7 +3,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 import Clock from "./clock.js";
-import GitCli from "./git.js";
+import Git from "./git.js";
 import BuildInfo from "./index.js";
 
 const enum ExitCode {
@@ -11,7 +11,7 @@ const enum ExitCode {
 	ERROR = 1,
 }
 
-const buildInfo: BuildInfo = new BuildInfo([new Clock(), new GitCli()]);
+const buildInfo: BuildInfo = new BuildInfo([new Clock(), new Git()]);
 
 const [, , file] = process.argv;
 
