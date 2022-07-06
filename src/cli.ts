@@ -2,6 +2,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
+import GitHubActions from "./actions.js";
 import Clock from "./clock.js";
 import Git from "./git.js";
 import Heroku from "./heroku.js";
@@ -16,6 +17,7 @@ const buildInfo: BuildInfo = new BuildInfo([
 	new Clock(),
 	new Git(),
 	new Heroku(),
+	new GitHubActions(),
 ]);
 
 const [, , file] = process.argv;
