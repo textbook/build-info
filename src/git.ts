@@ -27,12 +27,16 @@ export default class GitCli implements Source {
 	}
 
 	async lines(): Promise<string[]> {
-		const changes = await this.changes();
-		return changes.length > 0 ? ["With changes:", ...changes] : [];
+		return [`From: ${await this.commit()}`, ...await this.changes()];
+	}
+
+	private async commit(): Promise<string> {
+		const commit = await this.run("git show --no-patch  --format='%h %s'");
+		return commit.trim();
 	}
 
 	private async changes(): Promise<string[]> {
 		const stdout = await this.run("git status --porcelain");
-		return stdout ? stdout.split("\n") : [];
+		return stdout ? ["With changes:", ...stdout.split("\n")] : [];
 	}
 }

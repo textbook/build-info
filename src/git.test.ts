@@ -3,7 +3,7 @@ import test from "node:test";
 
 import sinon from "sinon";
 
-import GitCli from "./git.js";
+import GitCli, { type Run } from "./git.js";
 
 test("gets the git status", async () => {
 	const run = sinon.stub().returns("");
@@ -11,23 +11,23 @@ test("gets the git status", async () => {
 
 	await cli.lines();
 
-	sinon.assert.calledOnceWithExactly(run, "git status --porcelain");
+	sinon.assert.calledTwice(run);
+	sinon.assert.calledWithExactly(run, "git status --porcelain");
+	sinon.assert.calledWithExactly(run, "git show --no-patch  --format='%h %s'");
 });
 
 test("returns the output", async () => {
-	const cli = new GitCli(() => Promise.resolve("foo\nbar\nbaz"));
+	const cli = new GitCli(gitStub({ show: "def5678 Other commit message", status: "foo\nbar\nbaz" }));
 
-	const changes = await cli.lines();
-
-	assert.deepEqual(changes, ["With changes:", "foo", "bar", "baz"]);
+	assert.deepEqual(await cli.lines(), ["From: def5678 Other commit message", "With changes:", "foo", "bar", "baz"]);
 });
 
-test("doesn't include empty output", async () => {
-	const cli = new GitCli(() => Promise.resolve(""));
+test("doesn't include empty changes in output", async () => {
+	const cli = new GitCli(gitStub({ show: "abc1234 Some commit message", status: "" }));
 
 	const changes = await cli.lines();
 
-	assert.deepEqual(changes, []);
+	assert.deepEqual(changes, ["From: abc1234 Some commit message"]);
 });
 
 test("applies if git CLI is available", async () => {
@@ -44,3 +44,16 @@ test("doesn't apply if git CLI is missing", async () => {
 
 	assert.equal(await cli.applies(), false);
 });
+
+function gitStub({ show, status }: { show: string; status: string }): Run {
+	return (command) => {
+		switch (command.substring(0, 6)) {
+			case "git st":
+				return Promise.resolve(status);
+			case "git sh":
+				return Promise.resolve(show);
+			default:
+				throw new Error(`unknown command: ${command}`);
+		}
+	};
+}

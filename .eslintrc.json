@@ -23,6 +23,7 @@
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-non-null-assertion": "error",
     "@typescript-eslint/no-unused-vars": "error",
+    "indent": ["error", "tab", { "SwitchCase": 1 }],
     "no-extra-parens": "error"
   }
 }
