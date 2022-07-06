@@ -1,7 +1,7 @@
 import { exec } from "node:child_process";
 import { promisify } from "node:util";
 
-import { type Git } from "./index.js";
+import { type Source } from "./index.js";
 
 export type Run = (command: string) => Promise<string>;
 
@@ -13,11 +13,16 @@ const runCommand: Run = async (command) => {
 	return stdout;
 };
 
-export default class GitCli implements Git {
+export default class GitCli implements Source {
 
 	constructor(private run: Run = runCommand) {}
 
-	async changes(): Promise<string[]> {
+	async lines(): Promise<string[]> {
+		const changes = await this.changes();
+		return changes.length > 0 ? ["With changes:", ...changes] : [];
+	}
+
+	private async changes(): Promise<string[]> {
 		const stdout = await this.run("git status --porcelain");
 		return stdout ? stdout.split("\n") : [];
 	}

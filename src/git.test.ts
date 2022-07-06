@@ -9,7 +9,7 @@ test("gets the git status", async () => {
 	const run = sinon.stub().returns("");
 	const cli = new GitCli(run);
 
-	await cli.changes();
+	await cli.lines();
 
 	sinon.assert.calledOnceWithExactly(run, "git status --porcelain");
 });
@@ -17,15 +17,15 @@ test("gets the git status", async () => {
 test("returns the output", async () => {
 	const cli = new GitCli(() => Promise.resolve("foo\nbar\nbaz"));
 
-	const changes = await cli.changes();
+	const changes = await cli.lines();
 
-	assert.deepEqual(changes, ["foo", "bar", "baz"]);
+	assert.deepEqual(changes, ["With changes:", "foo", "bar", "baz"]);
 });
 
 test("doesn't include empty output", async () => {
 	const cli = new GitCli(() => Promise.resolve(""));
 
-	const changes = await cli.changes();
+	const changes = await cli.lines();
 
 	assert.deepEqual(changes, []);
 });

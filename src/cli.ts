@@ -2,17 +2,16 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
+import Clock from "./clock.js";
 import GitCli from "./git.js";
-import BuildInfo, { type Clock } from "./index.js";
+import BuildInfo from "./index.js";
 
 const enum ExitCode {
 	OK = 0,
 	ERROR = 1,
 }
 
-const wallClock: Clock = { now: () => new Date() };
-
-const buildInfo: BuildInfo = new BuildInfo(wallClock, new GitCli());
+const buildInfo: BuildInfo = new BuildInfo([new Clock(), new GitCli()]);
 
 const [, , file] = process.argv;
 

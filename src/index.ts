@@ -1,34 +1,16 @@
-export interface Clock {
-	now(): Date;
+export interface Source {
+	lines(): string[] | Promise<string[]>;
 }
 
-export interface Git {
-	changes(): Promise<string[]>;
-}
+export default class BuildInfo implements Source {
 
-export default class BuildInfo {
-
-	constructor(
-		private clock: Clock,
-		private git: Git,
-	) {}
+	constructor(private sources: Source[]) {}
 
 	async lines(): Promise<string[]> {
-		return [
-			`Built: ${this.timestamp()}`,
-			...await this.gitChanges(),
-		];
-	}
-
-	private async gitChanges(): Promise<string[]> {
-		const changes = await this.git.changes();
-		if (changes.length > 0) {
-			return ["With changes:", ...changes];
+		const lines = [];
+		for (const source of this.sources) {
+			lines.push(...await source.lines());
 		}
-		return [];
-	}
-
-	private timestamp(): string {
-		return this.clock.now().toISOString();
+		return lines;
 	}
 }
