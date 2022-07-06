@@ -18,5 +18,5 @@ test("does not apply if not running in Heroku", () => {
 test("exposes the source version", () => {
 	const heroku = new Heroku({ SOURCE_VERSION: "abc1234" });
 
-	assert.deepEqual(heroku.lines(), ["From: abc1234"]);
+	assert.deepEqual(heroku.lines(), ["By: Heroku", "From: abc1234"]);
 });
