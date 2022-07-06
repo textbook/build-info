@@ -23,6 +23,6 @@ export default class Git extends Cmd implements Source {
 
 	private async changes(): Promise<string[]> {
 		const stdout = await this.run("git status --porcelain");
-		return stdout ? ["With changes:", ...stdout.split("\n")] : [];
+		return stdout ? ["With changes:", ...stdout.trim().split("\n")] : [];
 	}
 }

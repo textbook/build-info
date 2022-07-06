@@ -4,6 +4,7 @@ import path from "node:path";
 
 import Clock from "./clock.js";
 import Git from "./git.js";
+import Heroku from "./heroku.js";
 import BuildInfo from "./index.js";
 
 const enum ExitCode {
@@ -11,7 +12,11 @@ const enum ExitCode {
 	ERROR = 1,
 }
 
-const buildInfo: BuildInfo = new BuildInfo([new Clock(), new Git()]);
+const buildInfo: BuildInfo = new BuildInfo([
+	new Clock(),
+	new Git(),
+	new Heroku(),
+]);
 
 const [, , file] = process.argv;
 

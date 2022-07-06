@@ -18,7 +18,7 @@ test("gets the git status", async () => {
 });
 
 test("returns the output", async () => {
-	const cli = new Git(gitStub({ show: "def5678 Other commit message", status: "foo\nbar\nbaz" }));
+	const cli = new Git(gitStub({ show: "def5678 Other commit message", status: "foo\nbar\nbaz\n" }));
 
 	assert.deepEqual(await cli.lines(), ["From: def5678 Other commit message", "With changes:", "foo", "bar", "baz"]);
 });
