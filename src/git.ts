@@ -17,6 +17,15 @@ export default class GitCli implements Source {
 
 	constructor(private run: Run = runCommand) {}
 
+	async applies(): Promise<boolean> {
+		try {
+			await this.run("git status");
+			return true;
+		} catch (err) {
+			return false;
+		}
+	}
+
 	async lines(): Promise<string[]> {
 		const changes = await this.changes();
 		return changes.length > 0 ? ["With changes:", ...changes] : [];

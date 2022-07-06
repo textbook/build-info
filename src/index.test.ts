@@ -11,3 +11,12 @@ test("includes all source lines", async () => {
 
 	assert.deepEqual(await buildInfo.lines(), ["foo", "bar"]);
 });
+
+test("excludes sources that don't apply", async () => {
+	const buildInfo = new BuildInfo([
+		{ applies: () => true, lines: () => ["foo"] },
+		{ applies: () => false, lines: () => Promise.resolve(["bar"]) },
+	]);
+
+	assert.deepEqual(await buildInfo.lines(), ["foo"]);
+});

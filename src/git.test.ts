@@ -29,3 +29,18 @@ test("doesn't include empty output", async () => {
 
 	assert.deepEqual(changes, []);
 });
+
+test("applies if git CLI is available", async () => {
+	const run = sinon.stub().returns("everything is fine");
+	const cli = new GitCli(run);
+
+	assert.equal(await cli.applies(), true);
+
+	sinon.assert.calledOnceWithExactly(run, "git status");
+});
+
+test("doesn't apply if git CLI is missing", async () => {
+	const cli = new GitCli(() => Promise.reject({ stderr: "fatal: not a git repository (or any of the parent directories): .git\n" }));
+
+	assert.equal(await cli.applies(), false);
+});
