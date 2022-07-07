@@ -15,11 +15,12 @@ jobs:
       - run: npm run lint
       - run: npm test
   e2e:
-    runs-on: ubuntu-22.04
-    needs: test
     strategy:
       matrix:
+        platform: [ubuntu-22.04, windows-2022]
         node: [14, 16, 18]
+    needs: test
+    runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
