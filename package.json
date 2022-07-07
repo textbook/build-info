@@ -24,6 +24,7 @@
     "pree2e": "npm run build",
     "e2e": "npm run start -- 'out.txt'",
     "lint": "eslint .",
+    "prepublishOnly": "npm run build",
     "start": "node lib/cli.js",
     "test": "node --loader ts-node/esm --test src/*.test.ts src/*/*.test.ts | faucet"
   },
