@@ -18,9 +18,9 @@ test("gets the git status", async () => {
 });
 
 test("returns the output", async () => {
-	const cli = new Git(gitStub({ show: "def5678 Other commit message", status: "foo\nbar\nbaz\n" }));
+	const cli = new Git(gitStub({ show: "def5678 Other commit message", status: " foo\n bar\n baz\n" }));
 
-	assert.deepEqual(await cli.lines(), ["From: def5678 Other commit message", "With changes:", "foo", "bar", "baz"]);
+	assert.deepEqual(await cli.lines(), ["From: def5678 Other commit message", "With changes:", " foo", " bar", " baz"]);
 });
 
 test("doesn't include empty changes in output", async () => {
