@@ -17,7 +17,7 @@ export default class Git extends Cmd implements Source {
 	}
 
 	private async commit(): Promise<string> {
-		const commit = await this.run("git show --no-patch  --format='%h %s'");
+		const commit = await this.run('git show --no-patch  --format="%h %s"');
 		return commit.trim();
 	}
 

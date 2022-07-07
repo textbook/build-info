@@ -14,7 +14,7 @@ test("gets the git status", async () => {
 
 	sinon.assert.calledTwice(run);
 	sinon.assert.calledWithExactly(run, "git status --porcelain");
-	sinon.assert.calledWithExactly(run, "git show --no-patch  --format='%h %s'");
+	sinon.assert.calledWithExactly(run, 'git show --no-patch  --format="%h %s"');
 });
 
 test("returns the output", async () => {
