@@ -40,6 +40,7 @@ jobs:
           cache: npm
           node-version: 18
       - run: npm ci
+      - run: npm run build
       - run: npm config set '//registry.npmjs.org/:_authToken' "${NPM_AUTH_TOKEN}"
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
