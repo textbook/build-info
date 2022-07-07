@@ -34,6 +34,7 @@
   },
   "keywords": [],
   "author": "Jonathan Sharpe <mail@jonrshar.pe>",
+  "funding": "https://ko-fi.com/textbook",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/textbook/build-info/issues"
