@@ -35,7 +35,7 @@ From: 3f27baa Refactor sources in subdirectory
 ### Compatibility
 
 The emitted code targets Node 14.8 and up (see `engines` field in `package.json`). It is tested on the three latest
-versions of Node (currently 14, 16 and 18).
+versions of Node (currently 14, 16 and 18) in Ubuntu (22.04) and Windows (Server 2022).
 
 ## Development
 
