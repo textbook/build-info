@@ -7,6 +7,7 @@ import Clock from "./clock.js";
 import Git from "./git.js";
 import Heroku from "./heroku.js";
 import BuildInfo from "./index.js";
+import User from "./user.js";
 
 const enum ExitCode {
 	OK = 0,
@@ -15,6 +16,7 @@ const enum ExitCode {
 
 const buildInfo: BuildInfo = new BuildInfo([
 	new Clock(),
+	new User(),
 	new Git(),
 	new Heroku(),
 	new GitHubActions(),
