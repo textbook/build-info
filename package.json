@@ -21,7 +21,7 @@
     "e2e": "npm run start -- 'out.txt'",
     "lint": "eslint .",
     "start": "node $npm_package_bin_buildinfo",
-    "test": "node --loader ts-node/esm --test src/*.test.ts | faucet"
+    "test": "node --loader ts-node/esm --test src/*.test.ts src/*/*.test.ts | faucet"
   },
   "repository": {
     "type": "git",

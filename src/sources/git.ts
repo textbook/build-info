@@ -1,5 +1,5 @@
 import { Cmd } from "./cmd.js";
-import { type Source } from "./index.js";
+import type { Source } from "../index.js";
 
 export default class Git extends Cmd implements Source {
 

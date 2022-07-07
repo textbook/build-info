@@ -2,12 +2,8 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-import GitHubActions from "./actions.js";
-import Clock from "./clock.js";
-import Git from "./git.js";
-import Heroku from "./heroku.js";
 import BuildInfo from "./index.js";
-import User from "./user.js";
+import { Clock, Git, GitHubActions, Heroku, User } from "./sources/index.js";
 
 const enum ExitCode {
 	OK = 0,

@@ -1,5 +1,5 @@
 import Env from "./env.js";
-import type { Source } from "./index.js";
+import type { Source } from "../index.js";
 
 export default class GitHubActions extends Env implements Source {
 
