@@ -9,7 +9,7 @@ export default class GitHubActions extends Env implements Source {
 
 	lines(): string[] {
 		return [
-			`By: GitHub Actions build ${this.env.GITHUB_RUN_NUMBER}`,
+			`In: GitHub Actions build ${this.env.GITHUB_RUN_NUMBER}`,
 			`URL: ${this.url()}`,
 		];
 	}

@@ -23,7 +23,7 @@ test("includes build number and link", () => {
 	});
 
 	assert.deepEqual(actions.lines(), [
-		"By: GitHub Actions build 123",
+		"In: GitHub Actions build 123",
 		"URL: https://example.com/repo/actions/runs/abc123",
 	]);
 });
