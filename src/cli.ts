@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import fs from "node:fs/promises";
-import path from "node:path";
+import fs from "fs/promises";
+import path from "path";
 
 import BuildInfo from "./index.js";
 import { Clock, Git, GitHubActions, Heroku, User } from "./sources/index.js";
