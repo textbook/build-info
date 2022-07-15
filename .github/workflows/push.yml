@@ -19,6 +19,13 @@ jobs:
       matrix:
         platform: [ubuntu-22.04, windows-2022]
         node: [14.0.0, 14, 16, 18]
+        exclude:
+          - node: 14.0.0
+            platform: windows-2022
+          - node: 14
+            platform: windows-2022
+          - node: 16
+            platform: windows-2022
     needs: test
     runs-on: ${{ matrix.platform }}
     steps:
