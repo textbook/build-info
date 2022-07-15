@@ -16,7 +16,7 @@
     "lib/"
   ],
   "engines": {
-    "node": ">=14.8"
+    "node": ">=14"
   },
   "scripts": {
     "prebuild": "rimraf lib/",
