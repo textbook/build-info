@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         platform: [ubuntu-22.04, windows-2022]
-        node: [14, 16, 18]
+        node: [14.0.0, 14, 16, 18]
     needs: test
     runs-on: ${{ matrix.platform }}
     steps:
