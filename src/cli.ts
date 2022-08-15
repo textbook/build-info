@@ -3,7 +3,7 @@ import fs from "fs/promises";
 import path from "path";
 
 import BuildInfo from "./index.js";
-import { Clock, Git, GitHubActions, Heroku, User } from "./sources/index.js";
+import { CircleCI, Clock, Git, GitHubActions, Heroku, User } from "./sources/index.js";
 
 const enum ExitCode {
 	OK = 0,
@@ -16,6 +16,7 @@ const buildInfo: BuildInfo = new BuildInfo([
 	new Git(),
 	new Heroku(),
 	new GitHubActions(),
+	new CircleCI(),
 ]);
 
 const [, , file] = process.argv;
