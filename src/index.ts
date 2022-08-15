@@ -10,7 +10,7 @@ export default class BuildInfo implements Source {
 	async lines(): Promise<string[]> {
 		const lines = [];
 		for (const source of this.sources) {
-			if (!source.applies || await source.applies()) {
+			if (await source.applies?.() !== false) {
 				lines.push(...await source.lines());
 			}
 		}
