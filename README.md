@@ -2,6 +2,17 @@
 
 Generate build information for tracking deployments.
 
+## Sources
+
+`buildinfo` has numerous sources, each of which is automatically enabled, if appropriate, in the following order:
+
+- **Clock** - includes the build time
+- **User** - includes the identity of the user
+- **Git** - includes the commit the build was based on and a summary of any changes from it
+- **Heroku** - includes the fact that it was built in Heroku and the commit it was based on
+- **GitHub Actions** - includes the build number and URL
+- **CircleCI** - includes the build number and URL
+
 ## Usage
 
 You can install this package using e.g. NPM:
