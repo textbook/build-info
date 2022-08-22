@@ -63,7 +63,7 @@ The following scripts are provided to aid development:
 
 - `npm run test`: Runs tests using [Node test runner] (plus [ts-node] and [Sinon])
 
-    **Note**: running the tests requires Node 18.
+    **Note**: running the tests requires `"node": "^16.17 || >=18"`.
 
 - `npm run e2e`: Builds the library with [TypeScript] and runs it, generating `out.txt`
 
