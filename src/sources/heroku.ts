@@ -4,10 +4,10 @@ import type { Source } from "../index.js";
 export default class Heroku extends Env implements Source {
 
 	applies(): boolean {
-		return !!this.env.SOURCE_VERSION;
+		return !!this.env["SOURCE_VERSION"];
 	}
 
 	lines(): string[] {
-		return ["In: Heroku", `From: ${this.env.SOURCE_VERSION}`];
+		return ["In: Heroku", `From: ${this.env["SOURCE_VERSION"]}`];
 	}
 }
