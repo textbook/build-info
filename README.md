@@ -43,6 +43,17 @@ By: jonrsharpe
 From: 3f27baa Refactor sources in subdirectory
 ```
 
+You can also run it without installation via [NPX]:
+
+```shell
+$ npx --package @textbook/build-info buildinfo path/to/file.txt
+Need to install the following packages:
+  @textbook/build-info
+Ok to proceed? (y)
+```
+
+_(you can suppress the confirmation with the `--yes` flag)_.
+
 ### Compatibility
 
 The emitted code targets Node 14 and up (see `engines` field in `package.json`). It is tested on the three latest
@@ -68,6 +79,7 @@ The following scripts are provided to aid development:
 - `npm run e2e`: Builds the library with [TypeScript] and runs it, generating `out.txt`
 
 [eslint]: https://eslint.org/
+[npx]: https://docs.npmjs.com/cli/v8/commands/npx
 [node test runner]: https://nodejs.org/api/test.html
 [sinon]: https://sinonjs.org/
 [ts-node]: https://typestrong.org/ts-node/
