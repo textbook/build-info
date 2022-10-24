@@ -12,6 +12,7 @@ Generate build information for tracking deployments.
 - **Heroku** - includes the fact that it was built in Heroku and the commit it was based on
 - **GitHub Actions** - includes the build number and URL
 - **CircleCI** - includes the build number and URL
+- **Netlify** - includes the build number and URL
 
 ## Usage
 
