@@ -3,4 +3,5 @@ export { default as CircleCI } from "./circle.js";
 export { default as Clock } from "./clock.js";
 export { default as Git } from "./git.js";
 export { default as Heroku } from "./heroku.js";
+export { default as Netlify } from "./netlify.js";
 export { default as User } from "./user.js";
