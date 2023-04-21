@@ -16,13 +16,15 @@
     "lib/"
   ],
   "engines": {
-    "node": ">=16.20"
+    "node": "^16.17 || >=18.3"
   },
   "scripts": {
     "prebuild": "rimraf lib/",
     "build": "tsc --project ./tsconfig.build.json",
     "pree2e": "npm run build",
-    "e2e": "npm run start -- 'out.txt'",
+    "e2e": "npm run e2e:output && npm run e2e:stdout",
+    "e2e:output": "npm run start -- -o 'out.txt'",
+    "e2e:stdout": "node lib/cli.js > 'out.txt'",
     "lint": "eslint .",
     "start": "node lib/cli.js",
     "test": "node --loader ts-node/esm --test src/*.test.ts src/*/*.test.ts"
@@ -41,7 +43,7 @@
   "homepage": "https://github.com/textbook/build-info#readme",
   "devDependencies": {
     "@codeyourfuture/eslint-config-standard": "^3.0.3",
-    "@types/node": "^16.18.24",
+    "@types/node": "^18.15.13",
     "@types/sinon": "^10.0.14",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",

@@ -1,8 +1,7 @@
 #!/usr/bin/env node
-import fs from "node:fs/promises";
-import path from "node:path";
-
+import getConfig from "./config.js";
 import BuildInfo from "./index.js";
+import { ConsoleSink, FileSink, type Sink } from "./sinks.js";
 import { CircleCI, Clock, Git, GitHubActions, Heroku, Netlify, User } from "./sources/index.js";
 
 const enum ExitCode {
@@ -20,18 +19,16 @@ const buildInfo: BuildInfo = new BuildInfo([
 	new Netlify(),
 ]);
 
-const [, , file] = process.argv;
+const [, , ...args] = process.argv;
 
-if (!file) {
-	console.error("Usage: buildinfo <file>");
-	process.exit(ExitCode.ERROR);
-}
+const { output } = getConfig(args);
+
+const sink: Sink = output ? new FileSink(output) : new ConsoleSink();
 
 (async (): Promise<void> => {
 	try {
-		await fs.mkdir(path.dirname(file), { recursive: true });
 		const lines = await buildInfo.lines();
-		await fs.writeFile(file, lines.join("\n"));
+		await sink.write(lines.join("\n"));
 		process.exit(ExitCode.OK);
 	} catch (err) {
 		console.error(err);

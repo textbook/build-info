@@ -26,7 +26,7 @@ jobs:
     strategy:
       matrix:
         platform: [ubuntu-22.04]
-        node: [16.20, 16, 18, 20]
+        node: [16.17, 16, 18, 20]
         include:
           - node: 18
             platform: windows-2022
@@ -41,7 +41,9 @@ jobs:
           name: package
       - run: npm init --yes
       - run: npm install package.tgz
-      - run: npx buildinfo out.txt
+      - run: npx buildinfo -o out.txt
+      - run: npx buildinfo --output out.txt
+      - run: npx buildinfo > out.txt
       - run: type out.txt
         if: contains(matrix.platform, 'windows')
       - run: cat out.txt
