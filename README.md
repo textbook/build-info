@@ -1,5 +1,8 @@
 # `@textbook/build-info`
 
+[![Node.js CI][actions-badge]][actions-link]
+[![NPM release][npm-badge]][npm-link]
+
 Generate build information for tracking deployments.
 
 ## Sources
@@ -79,9 +82,13 @@ The following scripts are provided to aid development:
 
 - `npm run e2e`: Builds the library with [TypeScript] and runs it, generating `out.txt`
 
+[actions-badge]: https://github.com/textbook/build-info/actions/workflows/push.yml/badge.svg
+[actions-link]: https://github.com/textbook/build-info/actions/workflows/push.yml
 [eslint]: https://eslint.org/
-[npx]: https://docs.npmjs.com/cli/v8/commands/npx
 [node test runner]: https://nodejs.org/api/test.html
+[npm-badge]: https://img.shields.io/npm/v/@textbook/build-info?logo=npm&color=blue
+[npm-link]: https://www.npmjs.com/package/@textbook/build-info
+[npx]: https://docs.npmjs.com/cli/v8/commands/npx
 [sinon]: https://sinonjs.org/
 [ts-node]: https://typestrong.org/ts-node/
 [typescript]: https://www.typescriptlang.org/
