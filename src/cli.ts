@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import fs from "fs/promises";
-import path from "path";
+import fs from "node:fs/promises";
+import path from "node:path";
 
 import BuildInfo from "./index.js";
 import { CircleCI, Clock, Git, GitHubActions, Heroku, Netlify, User } from "./sources/index.js";

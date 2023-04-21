@@ -60,8 +60,8 @@ _(you can suppress the confirmation with the `--yes` flag)_.
 
 ### Compatibility
 
-The emitted code targets Node 14 and up (see `engines` field in `package.json`). It is tested on the three latest
-versions of Node (currently 14, 16 and 18) in Ubuntu (22.04) and Windows (Server 2022).
+The emitted code targets Node 16.20 and up (see `engines` field in `package.json`). It is tested on the three latest
+even-numbered versions of Node (currently 16, 18 and 20) in Ubuntu (22.04) and Windows (Server 2022).
 
 ## Development
 
@@ -77,8 +77,6 @@ The following scripts are provided to aid development:
 - `npm run lint`: Applies linting using [ESLint]
 
 - `npm run test`: Runs tests using [Node test runner] (plus [ts-node] and [Sinon])
-
-    **Note**: running the tests requires `"node": "^16.17 || >=18"`.
 
 - `npm run e2e`: Builds the library with [TypeScript] and runs it, generating `out.txt`
 
