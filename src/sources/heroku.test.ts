@@ -1,22 +1,24 @@
 import assert from "node:assert/strict";
-import test from "node:test";
+import { describe, it } from "node:test";
 
 import Heroku from "./heroku.js";
 
-test("applies if running in Heroku", () => {
-	const heroku = new Heroku({ SOURCE_VERSION: "abc1234" });
+describe("Heroku", () => {
+	it("applies if running in Heroku", () => {
+		const heroku = new Heroku({ SOURCE_VERSION: "abc1234" });
 
-	assert.equal(heroku.applies(), true);
-});
+		assert.equal(heroku.applies(), true);
+	});
 
-test("does not apply if not running in Heroku", () => {
-	const heroku = new Heroku({});
+	it("does not apply if not running in Heroku", () => {
+		const heroku = new Heroku({});
 
-	assert.equal(heroku.applies(), false);
-});
+		assert.equal(heroku.applies(), false);
+	});
 
-test("exposes the source version", () => {
-	const heroku = new Heroku({ SOURCE_VERSION: "abc1234" });
+	it("exposes the source version", () => {
+		const heroku = new Heroku({ SOURCE_VERSION: "abc1234" });
 
-	assert.deepEqual(heroku.lines(), ["In: Heroku", "From: abc1234"]);
+		assert.deepEqual(heroku.lines(), ["In: Heroku", "From: abc1234"]);
+	});
 });
