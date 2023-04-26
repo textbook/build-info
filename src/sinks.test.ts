@@ -1,8 +1,7 @@
-import assert from "node:assert/strict";
 import { readFile, rm } from "node:fs/promises";
-import { beforeEach, describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
 
+import { expect } from "chai";
 import sinon, { type SinonStub } from "sinon";
 
 import { ConsoleSink, FileSink, type Sink } from "./sinks.js";
@@ -35,7 +34,7 @@ describe("sinks", () => {
 
 			await sink.write(data);
 
-			assert.equal(await readFile(tempFile, { encoding: "utf-8" }), data);
+			expect(await readFile(tempFile, { encoding: "utf-8" })).to.deep.equal(data);
 		});
 	});
 });

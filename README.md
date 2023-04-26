@@ -98,14 +98,18 @@ The following scripts are provided to aid development:
 
 - `npm run lint`: Applies linting using [ESLint]
 
-- `npm run test`: Runs tests using [Node test runner] (plus [ts-node] and [Sinon])
+- `npm run test`: Runs tests using [Mocha] (plus [ts-node], [Chai] and [Sinon])
+
+    - `npm run test:coverage`: Runs the tests with coverage using [c8]
 
 - `npm run e2e`: Builds the library with [TypeScript] and runs it, generating `out.txt`
 
 [actions-badge]: https://github.com/textbook/build-info/actions/workflows/push.yml/badge.svg
 [actions-link]: https://github.com/textbook/build-info/actions/workflows/push.yml
+[c8]: https://www.npmjs.com/package/c8
+[chai]: https://www.chaijs.com/
 [eslint]: https://eslint.org/
-[node test runner]: https://nodejs.org/api/test.html
+[mocha]: https://mochajs.org/
 [npm-badge]: https://img.shields.io/npm/v/@textbook/build-info?logo=npm&color=blue
 [npm-link]: https://www.npmjs.com/package/@textbook/build-info
 [npx]: https://docs.npmjs.com/cli/v8/commands/npx

@@ -13,7 +13,7 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: npm run lint
-      - run: npm test
+      - run: npm run test:coverage
       - run: npm run build
       - run: npm pack
       - run: mv textbook-build-info-*.tgz package.tgz

@@ -1,5 +1,4 @@
-import assert from "node:assert/strict";
-import { describe, it } from "node:test";
+import { expect } from "chai";
 
 import BuildInfo from "./index.js";
 
@@ -10,7 +9,7 @@ describe("BuildInfo", () => {
 			{ lines: () => Promise.resolve(["bar"]) },
 		]);
 
-		assert.deepEqual(await buildInfo.lines(), ["foo", "bar"]);
+		expect(await buildInfo.lines()).to.deep.equal(["foo", "bar"]);
 	});
 
 	it("excludes sources that don't apply", async () => {
@@ -19,6 +18,6 @@ describe("BuildInfo", () => {
 			{ applies: () => false, lines: () => Promise.resolve(["bar"]) },
 		]);
 
-		assert.deepEqual(await buildInfo.lines(), ["foo"]);
+		expect(await buildInfo.lines()).to.deep.equal(["foo"]);
 	});
 });

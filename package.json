@@ -27,7 +27,8 @@
     "e2e:stdout": "node lib/cli.js > 'out.txt'",
     "lint": "eslint .",
     "start": "node lib/cli.js",
-    "test": "node --loader ts-node/esm --test src/*.test.ts src/*/*.test.ts"
+    "test": "mocha",
+    "test:coverage": "c8 npm run test"
   },
   "repository": {
     "type": "git",
@@ -43,10 +44,15 @@
   "homepage": "https://github.com/textbook/build-info#readme",
   "devDependencies": {
     "@codeyourfuture/eslint-config-standard": "^3.0.3",
+    "@types/chai": "^4.3.4",
+    "@types/mocha": "^10.0.1",
     "@types/node": "^18.15.13",
     "@types/sinon": "^10.0.14",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
+    "c8": "^7.13.0",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
     "rimraf": "^5.0.0",
     "sinon": "^15.0.4",
     "ts-node": "^10.9.1",

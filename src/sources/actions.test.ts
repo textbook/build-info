@@ -1,17 +1,16 @@
-import assert from "node:assert/strict";
-import { describe, it } from "node:test";
+import { expect } from "chai";
 
 import GitHubActions from "./actions.js";
 
 describe("GitHub Actions", () => {
 	it("does not apply if not running in GitHub Actions", () => {
 		const actions = new GitHubActions({});
-		assert.equal(actions.applies(), false);
+		expect(actions.applies()).to.equal(false);
 	});
 
 	it("applies if running in GitHub Actions", () => {
 		const actions = new GitHubActions({ GITHUB_ACTIONS: "true" });
-		assert.equal(actions.applies(), true);
+		expect(actions.applies()).to.equal(true);
 	});
 
 	it("includes build number and link", () => {
@@ -23,7 +22,7 @@ describe("GitHub Actions", () => {
 			GITHUB_SERVER_URL: "https://example.com",
 		});
 
-		assert.deepEqual(actions.lines(), [
+		expect(actions.lines()).to.deep.equal([
 			"In: GitHub Actions build 123",
 			"URL: https://example.com/repo/actions/runs/abc123",
 		]);

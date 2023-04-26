@@ -1,6 +1,4 @@
-import assert from "node:assert/strict";
-import { describe, it } from "node:test";
-
+import { expect } from "chai";
 import sinon from "sinon";
 
 import User from "./user.js";
@@ -11,7 +9,7 @@ describe("User", () => {
 
 		const user = new User(run);
 
-		assert.deepEqual(await user.lines(), ["By: Jane Doe"]);
+		expect(await user.lines()).to.deep.equal(["By: Jane Doe"]);
 		sinon.assert.calledOnceWithExactly(run, "whoami");
 	});
 });

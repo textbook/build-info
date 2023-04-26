@@ -1,5 +1,4 @@
-import assert from "node:assert/strict";
-import { describe, it } from "node:test";
+import { expect } from "chai";
 
 import CircleCI from "./circle.js";
 
@@ -7,13 +6,13 @@ describe("CircleCI", () => {
 	it("applies if running in CircleCI", () => {
 		const circleCi = new CircleCI({ CIRCLECI: "true" });
 
-		assert.equal(circleCi.applies(), true);
+		expect(circleCi.applies()).to.equal(true);
 	});
 
 	it("does not apply if not running in CircleCI", () => {
 		const circleCi = new CircleCI({});
 
-		assert.equal(circleCi.applies(), false);
+		expect(circleCi.applies()).to.equal(false);
 	});
 
 	it("includes build number and link", () => {
@@ -22,7 +21,7 @@ describe("CircleCI", () => {
 			CIRCLE_BUILD_URL: "https://example.com/build/1234",
 		});
 
-		assert.deepEqual(circleCi.lines(), [
+		expect(circleCi.lines()).to.deep.equal([
 			"In: CircleCI build 1234",
 			"URL: https://example.com/build/1234",
 		]);

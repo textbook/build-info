@@ -1,6 +1,4 @@
-import assert from "node:assert/strict";
-import { describe, it } from "node:test";
-
+import { expect } from "chai";
 import sinon from "sinon";
 
 import type { Run } from "./cmd.js";
@@ -21,7 +19,7 @@ describe("Git", () => {
 	it("returns the output", async () => {
 		const cli = new Git(gitStub({ show: "def5678 Other commit message", status: " foo\n bar\n baz\n" }));
 
-		assert.deepEqual(await cli.lines(), ["From: def5678 Other commit message", "With changes:", " foo", " bar", " baz"]);
+		expect(await cli.lines()).to.deep.equal(["From: def5678 Other commit message", "With changes:", " foo", " bar", " baz"]);
 	});
 
 	it("doesn't include empty changes in output", async () => {
@@ -29,14 +27,14 @@ describe("Git", () => {
 
 		const changes = await cli.lines();
 
-		assert.deepEqual(changes, ["From: abc1234 Some commit message"]);
+		expect(changes).to.deep.equal(["From: abc1234 Some commit message"]);
 	});
 
 	it("applies if git CLI is available", async () => {
 		const run = sinon.stub().returns("everything is fine");
 		const cli = new Git(run);
 
-		assert.equal(await cli.applies(), true);
+		expect(await cli.applies()).to.equal(true);
 
 		sinon.assert.calledOnceWithExactly(run, "git status");
 	});
@@ -44,7 +42,7 @@ describe("Git", () => {
 	it("doesn't apply if git CLI is missing", async () => {
 		const cli = new Git(() => Promise.reject({ stderr: "fatal: not a git repository (or any of the parent directories): .git\n" }));
 
-		assert.equal(await cli.applies(), false);
+		expect(await cli.applies()).to.equal(false);
 	});
 });
 
