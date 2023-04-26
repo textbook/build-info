@@ -28,7 +28,7 @@
     "lint": "eslint .",
     "start": "node lib/cli.js",
     "test": "mocha",
-    "test:coverage": "c8 npm run test"
+    "test:coverage": "c8 --all --exclude 'lib/' --exclude 'src/**/*.test.ts' npm run test"
   },
   "repository": {
     "type": "git",
