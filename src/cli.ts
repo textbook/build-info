@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import getConfig from "./config.js";
-import BuildInfo from "./index.js";
+import BuildInfo, { type Source } from "./index.js";
 import { ConsoleSink, FileSink, type Sink } from "./sinks.js";
 
 const enum ExitCode {
@@ -12,10 +12,11 @@ const enum ExitCode {
 const { output } = getConfig(process.argv.slice(2));
 
 const sink: Sink = output ? new FileSink(output) : new ConsoleSink();
+const source: Source = new BuildInfo();
 
 (async (): Promise<void> => {
 	try {
-		const lines = await new BuildInfo().lines();
+		const lines = await source.lines();
 		await sink.write(lines.join("\n"));
 		process.exit(ExitCode.OK);
 	} catch (err) {
