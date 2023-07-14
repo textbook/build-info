@@ -1,6 +1,11 @@
 name: Node.js CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
+    tags: [ v* ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   test:
@@ -25,8 +30,8 @@ jobs:
   e2e:
     strategy:
       matrix:
-        platform: [ubuntu-22.04]
-        node: [16.17, 16, 18, 20]
+        platform: [ ubuntu-22.04 ]
+        node: [ 16.17, 16, 18.3, 18, 20 ]
         include:
           - node: 18
             platform: windows-2022
