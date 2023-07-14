@@ -12,7 +12,7 @@ Generate build information for tracking deployments.
 - **Clock** - includes the build time
 - **User** - includes the identity of the user
 - **Git** - includes the commit the build was based on and a summary of any changes from it
-- **Heroku** - includes the fact that it was built in Heroku and the commit it was based on
+- **Heroku** - includes the fact that it was built in Heroku, for which stack and from which commit
 - **GitHub Actions** - includes the build number and URL
 - **CircleCI** - includes the build number and URL
 - **Netlify** - includes the build number and URL

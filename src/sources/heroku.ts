@@ -8,6 +8,6 @@ export default class Heroku extends Env implements Source {
 	}
 
 	lines(): string[] {
-		return ["In: Heroku", `From: ${this.env["SOURCE_VERSION"]}`];
+		return ["In: Heroku", `For: ${this.env["STACK"]}`, `From: ${this.env["SOURCE_VERSION"]}`];
 	}
 }
