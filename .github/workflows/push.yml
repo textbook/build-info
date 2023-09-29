@@ -31,7 +31,7 @@ jobs:
     strategy:
       matrix:
         platform: [ ubuntu-22.04 ]
-        node: [ 16.17, 16, 18.3, 18, 20 ]
+        node: [ 18.3, 18, 20 ]
         include:
           - node: 18
             platform: windows-2022

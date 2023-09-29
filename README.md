@@ -82,8 +82,8 @@ If you don't supply the `--output` argument, data will be written to stdout, all
 
 ### Compatibility
 
-The emitted code targets Node from at least 16.17 or 18.3 (see `engines` field in `package.json`). It is tested on the
-three latest even-numbered versions of Node (currently 16, 18 and 20) in Ubuntu (22.04) and Windows (Server 2022).
+The emitted code targets Node from at least 18.3 (see `engines` field in `package.json`). It is tested on the latest
+even-numbered versions of Node (currently 18 and 20) in Ubuntu (22.04) and Windows (Server 2022).
 
 ## Development
 

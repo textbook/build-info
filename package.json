@@ -16,7 +16,7 @@
     "lib/"
   ],
   "engines": {
-    "node": "^16.17 || >=18.3"
+    "node": ">=18.3"
   },
   "scripts": {
     "prebuild": "rimraf lib/",
@@ -44,6 +44,7 @@
   "homepage": "https://github.com/textbook/build-info#readme",
   "devDependencies": {
     "@codeyourfuture/eslint-config-standard": "^4.0.3",
+    "@tsconfig/node18": "^18.2.2",
     "@types/chai": "^4.3.6",
     "@types/mocha": "^10.0.2",
     "@types/node": "^18.18.0",
