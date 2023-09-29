@@ -17,4 +17,13 @@ describe("config", () => {
 		const options = getConfig(["-o", "foo.txt", "-o", "bar.txt"]);
 		expect(options.output).to.equal("bar.txt");
 	});
+
+	it("handles the option not being provided at all", () => {
+		const options = getConfig([]);
+		expect(options.output).to.be.undefined;
+	});
+
+	it("rejects unknown options", () => {
+		expect(() => getConfig(["--some", "other"])).to.throw("Unknown option '--some'");
+	});
 });
