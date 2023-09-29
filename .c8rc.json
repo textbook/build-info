@@ -1,0 +1,8 @@
+{
+  "all": true,
+  "exclude": [
+    "src/**/*.test.ts"
+  ],
+  "report-dir": "./reports/coverage",
+  "src": "src/"
+}

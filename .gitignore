@@ -1,5 +1,6 @@
-coverage/
+.stryker-tmp/
 lib/
 node_modules/
+reports/
 out.txt
 textbook-build-info-*.tgz

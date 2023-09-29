@@ -28,7 +28,8 @@
     "lint": "eslint .",
     "start": "node lib/cli.js",
     "test": "mocha",
-    "test:coverage": "c8 --all --exclude 'lib/' --exclude 'src/**/*.test.ts' npm run test"
+    "test:coverage": "c8 npm run test",
+    "test:mutation": "stryker run"
   },
   "repository": {
     "type": "git",
@@ -44,6 +45,9 @@
   "homepage": "https://github.com/textbook/build-info#readme",
   "devDependencies": {
     "@codeyourfuture/eslint-config-standard": "^4.0.3",
+    "@stryker-mutator/core": "^7.1.1",
+    "@stryker-mutator/mocha-runner": "^7.1.1",
+    "@stryker-mutator/typescript-checker": "^7.1.1",
     "@tsconfig/node18": "^18.2.2",
     "@types/chai": "^4.3.6",
     "@types/mocha": "^10.0.2",
