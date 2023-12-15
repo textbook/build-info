@@ -45,9 +45,9 @@
   "homepage": "https://github.com/textbook/build-info#readme",
   "devDependencies": {
     "@codeyourfuture/eslint-config-standard": "^4.0.3",
-    "@stryker-mutator/core": "^7.3.0",
-    "@stryker-mutator/mocha-runner": "^7.3.0",
-    "@stryker-mutator/typescript-checker": "^7.3.0",
+    "@stryker-mutator/core": "^8.0.0",
+    "@stryker-mutator/mocha-runner": "^8.0.0",
+    "@stryker-mutator/typescript-checker": "^8.0.0",
     "@tsconfig/node18": "^18.2.2",
     "@types/chai": "^4.3.11",
     "@types/mocha": "^10.0.6",
