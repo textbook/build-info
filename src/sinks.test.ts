@@ -10,12 +10,12 @@ type StubOf<T extends () => unknown> = SinonStub<Parameters<T>, ReturnType<T>>
 
 describe("sinks", () => {
 	describe("ConsoleSink", () => {
-		it("writes data to the log", () => {
+		it("writes data to the log", async () => {
 			const log: StubOf<Console["log"]> = sinon.stub();
 			const sink: Sink = new ConsoleSink({ log });
 			const data = "Hello, world!";
 
-			sink.write(data);
+			await sink.write(data);
 
 			sinon.assert.calledOnceWithExactly(log, data);
 		});

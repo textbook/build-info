@@ -1,8 +1,9 @@
 {
   "extends": [
     "@codeyourfuture/standard",
-    "plugin:@typescript-eslint/stylistic",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:eslint-comments/recommended",
+    "plugin:@typescript-eslint/stylistic-type-checked",
+    "plugin:@typescript-eslint/recommended-type-checked"
   ],
   "ignorePatterns": [
     "lib/"
@@ -18,9 +19,15 @@
     }
   ],
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "root": true,
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": "error",
     "@typescript-eslint/no-non-null-assertion": "error",
+    "eslint-comments/no-unused-disable": "error",
+    "eslint-comments/require-description": "error",
     "indent": ["error", "tab", { "SwitchCase": 1 }],
     "no-extra-parens": "error"
   }
