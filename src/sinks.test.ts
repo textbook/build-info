@@ -22,13 +22,9 @@ describe("sinks", () => {
 	});
 
 	describe("FileSink", () => {
-		const tempFile = fileURLToPath(new URL("out.txt", import.meta.url));
-
-		beforeEach(async() => {
-			await rm(tempFile, { force: true });
-		});
-
 		it("writes data to the specified file", async () => {
+			const tempFile = fileURLToPath(new URL("out.txt", import.meta.url));
+			await rm(tempFile, { force: true });
 			const data = "Hello, world!";
 			const sink: Sink = new FileSink(tempFile);
 

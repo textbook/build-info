@@ -13,8 +13,14 @@
       "files": [
         "src/**/*.test.ts"
       ],
+      "extends": [
+        "plugin:mocha/all"
+      ],
       "rules": {
-        "@typescript-eslint/explicit-function-return-type": "off"
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "mocha/no-mocha-arrows": "off",
+        "mocha/no-synchronous-tests": "off",
+        "mocha/valid-test-description": "off"
       }
     }
   ],
