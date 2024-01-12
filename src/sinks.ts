@@ -17,10 +17,14 @@ export class ConsoleSink implements Sink {
 
 export class FileSink implements Sink {
 
-	constructor(private filename: string) {}
+	constructor(private filename: string, private console: Sink = new ConsoleSink()) {}
 
 	async write(data: string): Promise<void> {
-		await fs.mkdir(path.dirname(this.filename), { recursive: true });
-		await fs.writeFile(this.filename, data);
+		if (this.filename === "-") {
+			await this.console.write(data);
+		} else {
+			await fs.mkdir(path.dirname(this.filename), { recursive: true });
+			await fs.writeFile(this.filename, data);
+		}
 	}
 }

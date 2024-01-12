@@ -65,9 +65,8 @@ _(you can suppress the confirmation with the `--yes` flag)_.
 
 ### Stdout
 
-_(New in v0.5)_
-
-If you don't supply the `--output` argument, data will be written to stdout, allowing redirection:
+If you don't supply the `--output` argument (or supply the argument with the value `-`), data will be written to
+stdout, allowing redirection:
 
 ```json5
 {

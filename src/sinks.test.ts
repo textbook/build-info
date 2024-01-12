@@ -32,5 +32,16 @@ describe("sinks", () => {
 
 			expect(await readFile(tempFile, { encoding: "utf-8" })).to.deep.equal(data);
 		});
+
+		it("delegates to ConsoleSink if needed", async () => {
+			const log: StubOf<Console["log"]> = sinon.stub();
+			const consoleSink: Sink = new ConsoleSink({ log });
+			const data = "Hello, world!";
+			const fileSink = new FileSink("-", consoleSink);
+
+			await fileSink.write(data);
+
+			sinon.assert.calledOnceWithExactly(log, data);
+		});
 	});
 });
