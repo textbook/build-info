@@ -8,7 +8,21 @@ const enum ExitCode {
 	ERROR = 1,
 }
 
-const { output } = getConfig(process.argv.slice(2));
+const HELP = `
+usage: buildinfo [-h] [-o OUTPUT]
+
+options:
+  -h, --help            show this help message and exit
+  -o OUTPUT, --output OUTPUT
+                        the file to write data to
+`.trim();
+
+const { help, output } = getConfig(process.argv.slice(2));
+
+if (help) {
+	await new ConsoleSink().write(HELP);
+	process.exit(ExitCode.OK);
+}
 
 const sink: Sink = output ? new FileSink(output) : new ConsoleSink();
 const source: Source = new BuildInfo();
