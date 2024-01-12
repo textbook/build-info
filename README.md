@@ -60,6 +60,7 @@ _(you can suppress the confirmation with the `--yes` flag)_.
 
 #### Arguments
 
+- `-h`/`--help` - show a help message and exit
 - `-o`/`--output` - the file to write data to
 
 ### Stdout
