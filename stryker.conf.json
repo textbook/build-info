@@ -7,6 +7,9 @@
 	"ignorePatterns": [
 		"lib/"
 	],
+	"mochaOptions": {
+		"config": ".mocharc.json"
+	},
 	"packageManager": "npm",
 	"reporters": [
 		"html",
@@ -14,9 +17,6 @@
 		"progress"
 	],
 	"testRunner": "mocha",
-	"testRunnerNodeArgs": [
-		"--loader=ts-node/esm"
-	],
 	"tsconfigFile": "tsconfig.json",
 	"typescriptChecker": {
 		"prioritizePerformanceOverAccuracy": false
