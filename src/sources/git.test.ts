@@ -1,3 +1,5 @@
+import { type ExecException } from "node:child_process";
+
 import { expect } from "chai";
 import sinon from "sinon";
 
@@ -47,12 +49,19 @@ describe("Git", () => {
 		sinon.assert.calledOnceWithExactly(run, "git status");
 	});
 
-	it("doesn't apply if git CLI is missing", async () => {
-		const cli = new Git(() => Promise.reject({ stderr: "fatal: not a git repository (or any of the parent directories): .git\n" }));
+	it("doesn't apply if git command errors", async () => {
+		const stderr = "fatal: not a git repository (or any of the parent directories): .git\n";
+		const cli = new Git((cmd) => Promise.reject(createError({ cmd, code: 128, stderr })));
 
 		expect(await cli.applies()).to.equal(false);
 	});
 });
+
+type ProcessException = ExecException & { stderr?: string; stdout?: string; };
+
+function createError(overrides: Omit<ProcessException, keyof Error>): ProcessException {
+	return Object.assign(new Error(), { cmd: "", code: 1, killed: false, stderr: "", stdout: "", ...overrides });
+}
 
 function gitStub({ show, status }: { show: string; status: string }): Run {
 	return (command) => {
@@ -62,7 +71,7 @@ function gitStub({ show, status }: { show: string; status: string }): Run {
 			case "git sh":
 				return Promise.resolve(show);
 			default:
-				throw new Error(`unknown command: ${command}`);
+				return Promise.reject(createError({ cmd: command, code: 127, stderr: `unknown command: ${command}` }));
 		}
 	};
 }
