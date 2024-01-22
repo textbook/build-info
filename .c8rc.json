@@ -3,6 +3,7 @@
   "exclude": [
     "src/**/*.test.ts"
   ],
+  "reporter": ["lcovonly","text"],
   "report-dir": "./reports/coverage",
   "src": "src/"
 }

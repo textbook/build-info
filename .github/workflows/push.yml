@@ -16,15 +16,35 @@ jobs:
           node-version: 18
       - run: npm run lint
       - run: npm run test:coverage
+      - uses: actions/upload-artifact@v4
+        with:
+          if-no-files-found: error
+          name: coverage-report
+          path: reports
       - run: npm run test:mutation -- --reporters=clear-text,dots
       - run: npm run build
       - run: npm pack
       - run: mv textbook-build-info-*.tgz package.tgz
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           if-no-files-found: error
           name: package
           path: package.tgz
+  quality:
+    needs: [ test ]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: coverage-report
+          path: reports
+      - uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   e2e:
     strategy:
       matrix:
@@ -39,7 +59,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: package
       - run: npm init --yes
