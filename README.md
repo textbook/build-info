@@ -2,6 +2,7 @@
 
 [![Node.js CI][actions-badge]][actions-link]
 [![NPM release][npm-badge]][npm-link]
+[![Maintainability Rating][sonar-badge]][sonar-link]
 
 Generate build information for tracking deployments.
 
@@ -114,5 +115,7 @@ The following scripts are provided to aid development:
 [npm-link]: https://www.npmjs.com/package/@textbook/build-info
 [npx]: https://docs.npmjs.com/cli/v8/commands/npx
 [sinon]: https://sinonjs.org/
+[sonar-badge]: https://sonarcloud.io/api/project_badges/measure?project=textbook_build-info&metric=sqale_rating
+[sonar-link]: https://sonarcloud.io/summary/new_code?id=textbook_build-info
 [ts-node]: https://typestrong.org/ts-node/
 [typescript]: https://www.typescriptlang.org/
