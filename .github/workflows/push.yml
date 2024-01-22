@@ -94,6 +94,7 @@ jobs:
   deploy-npm:
     runs-on: ubuntu-22.04
     if: startsWith(github.ref, 'refs/tags/v')
+    environment: npm
     needs: e2e
     permissions:
       contents: read
