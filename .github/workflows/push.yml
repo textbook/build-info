@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: textbook/take-action@nodejs
         with:
-          node-version: 18
+          node-version: 20
       - run: npm run lint
       - run: npm run test:coverage
       - uses: actions/upload-artifact@v4
@@ -40,7 +40,7 @@ jobs:
       - uses: textbook/take-action@nodejs
         with:
           checkout: false
-          node-version: 18
+          node-version: 20
       - uses: actions/download-artifact@v4
         with:
           name: coverage-report
@@ -55,7 +55,7 @@ jobs:
         platform: [ ubuntu-22.04 ]
         node: [ 18.3, 18, 20 ]
         include:
-          - node: 18
+          - node: 20
             platform: windows-2022
     needs: [ test ]
     runs-on: ${{ matrix.platform }}
@@ -102,7 +102,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
       - uses: actions/download-artifact@v4
         with:
           name: package
