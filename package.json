@@ -22,6 +22,7 @@
     "prebuild": "rimraf lib/",
     "build": "tsc --project ./tsconfig.build.json",
     "pree2e": "npm run build",
+    "dev": "node --import ./bin/register-ts-node.js src/cli.ts",
     "e2e": "npm run e2e:output && npm run e2e:stdout",
     "e2e:output": "npm run start -- -o 'out.txt'",
     "e2e:stdout": "node lib/cli.js > 'out.txt'",

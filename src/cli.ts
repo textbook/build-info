@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import getConfig from "./config.js";
 import BuildInfo, { type Source } from "./index.js";
+import { getPackageProperty } from "./package.js";
 import { ConsoleSink, FileSink, type Sink } from "./sinks.js";
 
 const enum ExitCode {
@@ -9,18 +10,19 @@ const enum ExitCode {
 }
 
 const HELP = `
-usage: buildinfo [-h] [-o OUTPUT]
+usage: buildinfo [-h] [-o OUTPUT] [-v]
 
 options:
   -h, --help            show this help message and exit
   -o OUTPUT, --output OUTPUT
                         the file to write data to
+  -v, --version         show the version and exit
 `.trim();
 
-const { help, output } = getConfig(process.argv.slice(2));
+const { help, output, version } = getConfig(process.argv.slice(2));
 
-if (help) {
-	await new ConsoleSink().write(HELP);
+if (help ?? version) {
+	await new ConsoleSink().write(help ? HELP : await getPackageProperty("version"));
 	process.exit(ExitCode.OK);
 }
 
