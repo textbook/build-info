@@ -63,6 +63,7 @@ _(you can suppress the confirmation with the `--yes` flag)_.
 
 - `-h`/`--help` - show a help message and exit
 - `-o`/`--output` - the file to write data to
+- `-v`/`--version` - show the version and exit
 
 ### Stdout
 
@@ -84,7 +85,7 @@ stdout, allowing redirection:
 ### Compatibility
 
 The emitted code targets Node from at least 18.3 (see `engines` field in `package.json`). It is tested on the latest
-even-numbered versions of Node (currently 18 and 20) in Ubuntu (22.04) and Windows (Server 2022).
+even-numbered versions of Node (currently 18, 20 and 22) in Ubuntu (22.04) and Windows (Server 2022).
 
 ## Development
 
@@ -98,6 +99,8 @@ terminal commands or access environment variables respectively.
 The following scripts are provided to aid development:
 
 - `npm run lint`: Applies linting using [ESLint]
+
+- `npm run dev`: Runs the app without building it first (using [ts-node])
 
 - `npm run test`: Runs tests using [Mocha] (plus [ts-node], [Chai] and [Sinon])
 
