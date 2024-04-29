@@ -94,7 +94,9 @@ jobs:
   deploy-npm:
     runs-on: ubuntu-22.04
     if: startsWith(github.ref, 'refs/tags/v')
-    environment: npm
+    environment:
+      name: npm
+      url: https://www.npmjs.com/package/@textbook/build-info
     needs: [ e2e ]
     permissions:
       contents: read
