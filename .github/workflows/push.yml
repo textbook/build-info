@@ -57,6 +57,8 @@ jobs:
         include:
           - node: 20
             platform: windows-2022
+          - node: 20
+            platform: ubuntu-24.04
     needs: [ test ]
     runs-on: ${{ matrix.platform }}
     steps:
