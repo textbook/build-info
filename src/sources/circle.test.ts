@@ -22,8 +22,8 @@ describe("CircleCI", () => {
 		});
 
 		expect(circleCi.lines()).to.deep.equal([
-			"In: CircleCI build 1234",
-			"URL: https://example.com/build/1234",
+			{ content: "CircleCI build 1234", label: "In", name: "in" },
+			{ content: "https://example.com/build/1234", label: "URL", name: "circleCiUrl" },
 		]);
 	});
 });

@@ -1,5 +1,6 @@
+import type { Line, Source } from "../index.js";
+
 import Env from "./env.js";
-import type { Source } from "../index.js";
 
 export default class Netlify extends Env implements Source {
 
@@ -7,10 +8,14 @@ export default class Netlify extends Env implements Source {
 		return this.env.NETLIFY === "true";
 	}
 
-	lines(): string[] {
+	lines(): Line[] {
 		return [
-			`In: Netlify build ${this.env.BUILD_ID}`,
-			`URL: https://app.netlify.com/sites/${this.env.SITE_NAME}/deploys/${this.env.DEPLOY_ID}`,
+			{ content: `Netlify build ${this.env.BUILD_ID}`, label: "In", name: "in" },
+			{
+				content: `https://app.netlify.com/sites/${this.env.SITE_NAME}/deploys/${this.env.DEPLOY_ID}`,
+				label: "URL",
+				name: "netlifyUrl",
+			},
 		];
 	}
 }

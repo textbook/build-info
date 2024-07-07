@@ -1,6 +1,9 @@
 import { parseArgs } from "node:util";
 
+import { Format, FORMATTERS } from "./formatters.js";
+
 interface Configuration {
+	format: Format;
 	help: boolean | undefined;
 	output: string | undefined;
 	version: boolean | undefined;
@@ -10,10 +13,19 @@ export default function getConfig(args: string[]): Configuration {
 	const { values } = parseArgs({
 		args,
 		options: {
+			format: { default: "text", short: "f", type: "string" },
 			help: { short: "h", type: "boolean" },
 			output: { short: "o", type: "string" },
 			version: { short: "v", type: "boolean" },
 		},
 	});
-	return values;
+	const { format } = values;
+	validateFormat(format);
+	return { ...values, format };
+}
+
+function validateFormat(format: string | undefined): asserts format is Format {
+	if (!format || !(format in FORMATTERS)) {
+		throw new Error(`Invalid format '${format}'`);
+	}
 }

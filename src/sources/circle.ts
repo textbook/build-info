@@ -1,4 +1,5 @@
-import { Source } from "../index.js";
+import { Line, Source } from "../index.js";
+
 import Env from "./env.js";
 
 export default class CircleCI extends Env implements Source {
@@ -6,10 +7,10 @@ export default class CircleCI extends Env implements Source {
 		return this.env.CIRCLECI === "true";
 	}
 
-	lines(): string[] {
+	lines(): Line[] {
 		return [
-			`In: CircleCI build ${this.env.CIRCLE_BUILD_NUM}`,
-			`URL: ${this.env.CIRCLE_BUILD_URL}`,
+			{ content: `CircleCI build ${this.env.CIRCLE_BUILD_NUM}`, label: "In", name: "in" },
+			{ content: `${this.env.CIRCLE_BUILD_URL}`, label: "URL", name: "circleCiUrl" },
 		];
 	}
 }

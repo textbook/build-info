@@ -18,6 +18,10 @@ describe("Heroku", () => {
 	it("exposes the source version and stack", () => {
 		const heroku = new Heroku({ SOURCE_VERSION: "abc1234", STACK: "heroku-22" });
 
-		expect(heroku.lines()).to.deep.equal(["In: Heroku", "For: heroku-22", "From: abc1234"]);
+		expect(heroku.lines()).to.deep.equal([
+			{ content: "Heroku", label: "In", name: "in" },
+			{ content: "heroku-22", label: "For", name: "for" },
+			{ content: "abc1234", label: "From", name: "from" },
+		]);
 	});
 });

@@ -9,7 +9,9 @@ describe("User", () => {
 
 		const user = new User(run);
 
-		expect(await user.lines()).to.deep.equal(["By: Jane Doe"]);
+		expect(await user.lines()).to.deep.equal([
+			{ content: "Jane Doe", label: "By", name: "by" },
+		]);
 		sinon.assert.calledOnceWithExactly(run, "whoami");
 	});
 });

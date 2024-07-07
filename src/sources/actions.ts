@@ -1,5 +1,6 @@
+import type { Line, Source } from "../index.js";
+
 import Env from "./env.js";
-import type { Source } from "../index.js";
 
 export default class GitHubActions extends Env implements Source {
 
@@ -7,10 +8,10 @@ export default class GitHubActions extends Env implements Source {
 		return !!this.env.GITHUB_ACTIONS;
 	}
 
-	lines(): string[] {
+	lines(): Line[] {
 		return [
-			`In: GitHub Actions build ${this.env.GITHUB_RUN_NUMBER}`,
-			`URL: ${this.url()}`,
+			{ content: `GitHub Actions build ${this.env.GITHUB_RUN_NUMBER}`, label: "In", name: "in" },
+			{ content: this.url(), label: "URL", name: "githubActionsUrl" },
 		];
 	}
 

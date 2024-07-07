@@ -21,7 +21,10 @@ describe("Git", () => {
 	it("returns the output", async () => {
 		const cli = new Git(gitStub({ show: "def5678 Other commit message", status: " foo\n bar\n baz\n" }));
 
-		expect(await cli.lines()).to.deep.equal(["From: def5678 Other commit message", "With changes:", " foo", " bar", " baz"]);
+		expect(await cli.lines()).to.deep.equal([
+			{ content: "def5678 Other commit message", label: "From", name: "from" },
+			{ content: " foo\n bar\n baz", label: "With changes", name: "changes" },
+		]);
 	});
 
 	it("trims multiline commit messages", async () => {
@@ -29,7 +32,9 @@ describe("Git", () => {
 
 		const changes = await cli.lines();
 
-		expect(changes).to.deep.equal(["From: abc1234 Some commit message"]);
+		expect(changes).to.deep.equal([
+			{ content: "abc1234 Some commit message", label: "From", name: "from" },
+		]);
 	});
 
 	it("doesn't include empty changes in output", async () => {
@@ -37,7 +42,9 @@ describe("Git", () => {
 
 		const changes = await cli.lines();
 
-		expect(changes).to.deep.equal(["From: abc1234 Some commit message"]);
+		expect(changes).to.deep.equal([
+			{ content: "abc1234 Some commit message", label: "From", name: "from" },
+		]);
 	});
 
 	it("applies if git CLI is available", async () => {

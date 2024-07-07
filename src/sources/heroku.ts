@@ -1,5 +1,6 @@
+import type { Line, Source } from "../index.js";
+
 import Env from "./env.js";
-import type { Source } from "../index.js";
 
 export default class Heroku extends Env implements Source {
 
@@ -7,7 +8,11 @@ export default class Heroku extends Env implements Source {
 		return !!this.env.SOURCE_VERSION;
 	}
 
-	lines(): string[] {
-		return ["In: Heroku", `For: ${this.env.STACK}`, `From: ${this.env.SOURCE_VERSION}`];
+	lines(): Line[] {
+		return [
+			{ content: "Heroku", label: "In", name: "in" },
+			{ content: `${this.env.STACK}`, label: "For", name: "for" },
+			{ content: `${this.env.SOURCE_VERSION}`, label: "From", name: "from" },
+		];
 	}
 }

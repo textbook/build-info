@@ -1,5 +1,6 @@
+import type { Line, Source } from "../index.js";
+
 import { Cmd } from "./cmd.js";
-import type { Source } from "../index.js";
 
 export default class Git extends Cmd implements Source {
 
@@ -12,8 +13,11 @@ export default class Git extends Cmd implements Source {
 		}
 	}
 
-	async lines(): Promise<string[]> {
-		return [`From: ${await this.commit()}`, ...await this.changes()];
+	async lines(): Promise<Line[]> {
+		return [
+			{ content: await this.commit(), label: "From", name: "from" },
+			...await this.changes(),
+		];
 	}
 
 	private async commit(): Promise<string> {
@@ -21,8 +25,10 @@ export default class Git extends Cmd implements Source {
 		return commit.trim();
 	}
 
-	private async changes(): Promise<string[]> {
+	private async changes(): Promise<Line[]> {
 		const stdout = await this.run("git status --porcelain");
-		return stdout ? ["With changes:", ...stdout.trimEnd().split("\n")] : [];
+		return stdout
+			? [{ content: stdout.trimEnd(), label: "With changes", name: "changes" }]
+			: [];
 	}
 }

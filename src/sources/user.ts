@@ -1,9 +1,10 @@
+import type { Line, Source } from "../index.js";
+
 import { Cmd } from "./cmd.js";
-import type { Source } from "../index.js";
 
 export default class User extends Cmd implements Source {
-	async lines(): Promise<string[]> {
+	async lines(): Promise<Line[]> {
 		const user = await this.run("whoami");
-		return [`By: ${user.trim()}`];
+		return [{ content: user.trim(), label: "By", name: "by" }];
 	}
 }
