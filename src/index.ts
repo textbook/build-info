@@ -1,9 +1,10 @@
 import { CircleCI, Clock, Git, GitHubActions, Heroku, Netlify, User } from "./sources/index.js";
 
 export interface Line {
-  content: string;
-  label: string;
-  name: string;
+	content: string;
+	label: string;
+	name: string;
+	url?: boolean;
 }
 
 export interface Source {

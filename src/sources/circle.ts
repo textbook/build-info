@@ -10,7 +10,7 @@ export default class CircleCI extends Env implements Source {
 	lines(): Line[] {
 		return [
 			{ content: `CircleCI build ${this.env.CIRCLE_BUILD_NUM}`, label: "In", name: "in" },
-			{ content: `${this.env.CIRCLE_BUILD_URL}`, label: "URL", name: "circleCiUrl" },
+			{ content: `${this.env.CIRCLE_BUILD_URL}`, label: "URL", name: "circleCiUrl", url: true },
 		];
 	}
 }

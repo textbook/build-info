@@ -39,6 +39,7 @@ export default [
 		rules: {
 			...mochaPlugin.configs.flat.all.rules,
 			"@typescript-eslint/explicit-function-return-type": "off",
+			"@typescript-eslint/no-non-null-assertion": "off",
 			"mocha/no-mocha-arrows": "off",
 			"mocha/no-synchronous-tests": "off",
 			"mocha/valid-test-description": "off",

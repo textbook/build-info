@@ -23,7 +23,7 @@ describe("CircleCI", () => {
 
 		expect(circleCi.lines()).to.deep.equal([
 			{ content: "CircleCI build 1234", label: "In", name: "in" },
-			{ content: "https://example.com/build/1234", label: "URL", name: "circleCiUrl" },
+			{ content: "https://example.com/build/1234", label: "URL", name: "circleCiUrl", url: true },
 		]);
 	});
 });

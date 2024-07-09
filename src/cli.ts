@@ -11,15 +11,15 @@ const enum ExitCode {
 }
 
 const HELP = `
-usage: buildinfo [-h] [-o OUTPUT] [-v] [-f {json,text}]
+usage: buildinfo [-h] [-f {html,json,text}] [-o OUTPUT] [-v]
 
 options:
   -h, --help            show this help message and exit
+  -f {html,json,text}, --format {html,json,text}
+                        the format to provide data in (default: text)
   -o OUTPUT, --output OUTPUT
                         the file to write data to
   -v, --version         show the version and exit
-  -f {json,text}, --format {json,text}
-                        the format to provide data in (default: text)
 `.trim();
 
 const { format, help, output, version } = getConfig(process.argv.slice(2));

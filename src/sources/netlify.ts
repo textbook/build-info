@@ -15,6 +15,7 @@ export default class Netlify extends Env implements Source {
 				content: `https://app.netlify.com/sites/${this.env.SITE_NAME}/deploys/${this.env.DEPLOY_ID}`,
 				label: "URL",
 				name: "netlifyUrl",
+				url: true,
 			},
 		];
 	}

@@ -11,7 +11,7 @@ export default class GitHubActions extends Env implements Source {
 	lines(): Line[] {
 		return [
 			{ content: `GitHub Actions build ${this.env.GITHUB_RUN_NUMBER}`, label: "In", name: "in" },
-			{ content: this.url(), label: "URL", name: "githubActionsUrl" },
+			{ content: this.url(), label: "URL", name: "githubActionsUrl", url: true },
 		];
 	}
 

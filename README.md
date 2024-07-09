@@ -61,7 +61,7 @@ _(you can suppress the confirmation with the `--yes` flag)_.
 
 #### Arguments
 
-- `-f`/`--format` - the format to provide data in (one of `json`, `text`; default: `text`)
+- `-f`/`--format` - the format to provide data in (one of `html`, `json`, `text`; default: `text`)
 - `-h`/`--help` - show a help message and exit
 - `-o`/`--output` - the file to write data to
 - `-v`/`--version` - show the version and exit

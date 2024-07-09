@@ -12,7 +12,7 @@ describe("Netlify", () => {
 		const env = { BUILD_ID: "build-id", DEPLOY_ID: "deploy-id", SITE_NAME: "site-name" };
 		expect(new Netlify(env).lines()).to.deep.equal([
 			{ content: "Netlify build build-id", label: "In", name: "in" },
-			{ content: "https://app.netlify.com/sites/site-name/deploys/deploy-id", label: "URL", name: "netlifyUrl" },
+			{ content: "https://app.netlify.com/sites/site-name/deploys/deploy-id", label: "URL", name: "netlifyUrl", url: true },
 		]);
 	});
 });

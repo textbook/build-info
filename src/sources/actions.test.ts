@@ -24,7 +24,7 @@ describe("GitHub Actions", () => {
 
 		expect(actions.lines()).to.deep.equal([
 			{ content: "GitHub Actions build 123", label: "In", name: "in" },
-			{ content: "https://example.com/repo/actions/runs/abc123", label: "URL", name: "githubActionsUrl" },
+			{ content: "https://example.com/repo/actions/runs/abc123", label: "URL", name: "githubActionsUrl", url: true },
 		]);
 	});
 });
