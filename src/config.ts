@@ -13,19 +13,19 @@ export default function getConfig(args: string[]): Configuration {
 	const { values } = parseArgs({
 		args,
 		options: {
-			format: { default: "text", short: "f", type: "string" },
+			format: { short: "f", type: "string" },
 			help: { short: "h", type: "boolean" },
 			output: { short: "o", type: "string" },
 			version: { short: "v", type: "boolean" },
 		},
 	});
-	const { format } = values;
+	const { format = "text" } = values;
 	validateFormat(format);
 	return { ...values, format };
 }
 
 function validateFormat(format: string | undefined): asserts format is Format {
 	if (!format || !(format in FORMATTERS)) {
-		throw new Error(`Invalid format '${format}'`);
+		throw new Error(`Invalid format ${JSON.stringify(format)}`);
 	}
 }

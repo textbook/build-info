@@ -47,7 +47,7 @@ describe("config", () => {
 		});
 
 		it("rejects unknown values", () => {
-			expect(() => getConfig(["--format", "banana"])).to.throw("Invalid format 'banana'");
+			expect(() => getConfig(["--format", "banana"])).to.throw('Invalid format "banana"');
 		});
 	});
 
