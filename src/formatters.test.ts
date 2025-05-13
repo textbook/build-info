@@ -11,7 +11,6 @@ describe("formatters", () => {
 				{ content: "hello", label: "Foo", name: "foo" },
 				{ content: "https://example.com", label: "Bar", name: "bar", url: true },
 			]);
-			console.log(formatted);
 			const dom = new JSDOM(formatted);
 			expect(dom.window.document.querySelector("h1")!.textContent).to.equal("Build Info");
 			const table = [...dom.window.document.querySelectorAll("table > tbody > tr")]

@@ -10,6 +10,10 @@
   "bin": {
     "buildinfo": "lib/cli.js"
   },
+  "exports": {
+    ".": "./lib/index.js",
+    "./rollup-plugin": "./lib/rollup.js"
+  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -36,7 +40,10 @@
     "type": "git",
     "url": "git+https://github.com/textbook/build-info.git"
   },
-  "keywords": [],
+  "keywords": [
+    "rollup-plugin",
+    "vite-plugin"
+  ],
   "author": "Jonathan Sharpe <mail@jonrshar.pe>",
   "funding": "https://ko-fi.com/textbook",
   "license": "ISC",
@@ -64,6 +71,7 @@
     "jsdom": "^26.1.0",
     "mocha": "^11.2.2",
     "rimraf": "^6.0.1",
+    "rollup": "^4.40.2",
     "sinon": "^20.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",

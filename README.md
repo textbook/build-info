@@ -83,6 +83,34 @@ stdout, allowing redirection:
 }
 ```
 
+## Vite/Rollup plugin
+
+_Since v1.4.0._
+
+This package also provides a Rollup plugin, which is compatible with Vite, to add an info file to the build outputs.
+
+```javascript
+import buildInfo from "@textbook/build-info/rollup-plugin";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  plugins: [buildInfo({ filename: "buildinfo.txt" }), /* ... */],
+  // ...
+});
+```
+
+#### Options
+
+- `filename`: the name of the file to emit to the build outputs
+
+    The appropriate format will be detected from the extension:
+
+    - `.html` files get HTML format;
+    - `.json` files get JSON format;
+    - all others get text format.
+
+- `format` (optional): override extension detection, one of `"html"`, `"json"` or `"text"`
+
 ### Compatibility
 
 The emitted code targets Node from at least 18.3 (see `engines` field in `package.json`). It is tested on the latest
