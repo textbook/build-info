@@ -50,7 +50,7 @@
     "@stryker-mutator/mocha-runner": "^8.7.1",
     "@stryker-mutator/typescript-checker": "^8.7.1",
     "@tsconfig/node18": "^18.2.4",
-    "@types/chai": "^4.3.20",
+    "@types/chai": "^5.2.2",
     "@types/eslint": "^9.6.1",
     "@types/jsdom": "^21.1.7",
     "@types/mocha": "^10.0.10",
