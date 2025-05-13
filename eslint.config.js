@@ -25,6 +25,7 @@ export default [
 			...commentsPlugin.configs.recommended.rules,
 			"@typescript-eslint/explicit-module-boundary-types": "error",
 			"@typescript-eslint/no-non-null-assertion": "error",
+			"@typescript-eslint/prefer-readonly": "error",
 			"eslint-comments/no-unused-disable": "error",
 			"eslint-comments/require-description": "error",
 			"no-extra-parens": "error",
