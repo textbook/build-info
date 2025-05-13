@@ -4,9 +4,9 @@ import { Format, FORMATTERS } from "./formatters.js";
 
 interface Configuration {
 	format: Format;
-	help: boolean | undefined;
-	output: string | undefined;
-	version: boolean | undefined;
+	help?: boolean;
+	output?: string;
+	version?: boolean;
 }
 
 export default function getConfig(args: string[]): Configuration {
