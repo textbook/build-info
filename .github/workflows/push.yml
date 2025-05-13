@@ -9,11 +9,11 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: textbook/take-action@nodejs
         with:
-          node-version: 20
+          node-version: 22
       - run: npm run lint
       - run: npm run test:coverage
       - uses: actions/upload-artifact@v4
@@ -32,7 +32,7 @@ jobs:
           path: package.tgz
   quality:
     needs: [ test ]
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
         with:
@@ -40,7 +40,7 @@ jobs:
       - uses: textbook/take-action@nodejs
         with:
           checkout: false
-          node-version: 20
+          node-version: 22
       - uses: actions/download-artifact@v4
         with:
           name: coverage-report
@@ -51,12 +51,12 @@ jobs:
   e2e:
     strategy:
       matrix:
-        platform: [ ubuntu-22.04 ]
-        node: [ 18.3, 18, 20, 22 ]
+        platform: [ ubuntu-24.04 ]
+        node: [ 18.3, 18, 20, 22, 24 ]
         include:
-          - node: 20
+          - node: 22
             platform: windows-2022
-          - node: 20
+          - node: 22
             platform: ubuntu-24.04
     needs: [ test ]
     runs-on: ${{ matrix.platform }}
@@ -77,7 +77,7 @@ jobs:
       - run: cat out.txt
         if: contains(matrix.platform, 'ubuntu')
   deploy-github:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     if: startsWith(github.ref, 'refs/tags/v')
     needs: [ e2e ]
     steps:
@@ -93,7 +93,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
   deploy-npm:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     if: startsWith(github.ref, 'refs/tags/v')
     environment:
       name: npm
@@ -105,7 +105,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
       - uses: actions/download-artifact@v4
         with:
           name: package
