@@ -6,7 +6,6 @@ export interface Sink {
 }
 
 export class ConsoleSink implements Sink {
-
 	constructor(private logger: Pick<Console, "log"> = console) {}
 
 	// eslint-disable-next-line @typescript-eslint/require-await -- Promise required for the interface
@@ -16,7 +15,6 @@ export class ConsoleSink implements Sink {
 }
 
 export class FileSink implements Sink {
-
 	constructor(private filename: string, private console: Sink = new ConsoleSink()) {}
 
 	async write(data: string): Promise<void> {

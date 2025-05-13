@@ -3,7 +3,6 @@ import type { Line, Source } from "../index.js";
 import Env from "./env.js";
 
 export default class Netlify extends Env implements Source {
-
 	applies(): boolean {
 		return this.env.NETLIFY === "true";
 	}

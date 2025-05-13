@@ -6,7 +6,7 @@ import sinon, { type SinonStub } from "sinon";
 
 import { ConsoleSink, FileSink, type Sink } from "./sinks.js";
 
-type StubOf<T extends () => unknown> = SinonStub<Parameters<T>, ReturnType<T>>
+type StubOf<T extends () => unknown> = SinonStub<Parameters<T>, ReturnType<T>>;
 
 describe("sinks", () => {
 	describe("ConsoleSink", () => {

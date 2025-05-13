@@ -23,7 +23,6 @@ const ALL_SOURCES: Source[] = [
 ];
 
 export default class BuildInfo implements Source {
-
 	constructor(private sources: Source[] = ALL_SOURCES) {}
 
 	async lines(): Promise<Line[]> {

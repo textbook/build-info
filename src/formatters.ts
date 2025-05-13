@@ -1,7 +1,7 @@
 import { Line } from "./index.js";
 
 export interface Formatter {
-  format(data: Line[]): string;
+	format(data: Line[]): string;
 }
 
 export class HtmlFormatter implements Formatter {

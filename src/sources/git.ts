@@ -3,12 +3,11 @@ import type { Line, Source } from "../index.js";
 import { Cmd } from "./cmd.js";
 
 export default class Git extends Cmd implements Source {
-
 	async applies(): Promise<boolean> {
 		try {
 			await this.run("git status");
 			return true;
-		} catch (err) {
+		} catch {
 			return false;
 		}
 	}

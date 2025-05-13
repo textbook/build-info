@@ -64,7 +64,7 @@ describe("Git", () => {
 	});
 });
 
-type ProcessException = ExecException & { stderr?: string; stdout?: string; };
+type ProcessException = ExecException & { stderr?: string; stdout?: string };
 
 function createError(overrides: Omit<ProcessException, keyof Error>): ProcessException {
 	return Object.assign(new Error(), { cmd: "", code: 1, killed: false, stderr: "", stdout: "", ...overrides });
