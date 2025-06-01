@@ -52,6 +52,11 @@ describe("Rollup plugin", () => {
 		await plugin.buildEnd.call(ctx.context);
 		expect(JSON.parse(ctx.getSource())).to.have.property("built");
 	});
+
+	it("does not run on serve", () => {
+		const plugin = buildInfo({ filename: "test.txt" });
+		expect(plugin.apply).to.equal("build");
+	});
 });
 
 function createTestContext() {
