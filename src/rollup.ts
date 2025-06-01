@@ -1,6 +1,6 @@
 import { parse } from "node:path";
 
-import type { PluginContext, Plugin } from "rollup";
+import type { Plugin, PluginContext } from "rollup";
 
 import { FORMATTERS, type Format } from "./formatters.js";
 import BuildInfo from "./index.js";
@@ -15,12 +15,13 @@ export interface BuildInfoPlugin {
 	name: string;
 	version: string;
 	buildEnd(this: PluginContext): Promise<void>;
+	apply: "build";
 }
 
 const { name, version } = await getPackageFile();
 
 export default function buildInfo({ filename, format = getFormat(filename) }: PluginOptions): BuildInfoPlugin {
-	return {
+	const plugin = {
 		name,
 		version,
 		async buildEnd() {
@@ -30,6 +31,7 @@ export default function buildInfo({ filename, format = getFormat(filename) }: Pl
 			this.emitFile({ type: "asset", fileName: filename, source: formatter.format(lines) });
 		},
 	} satisfies Plugin;
+	return { apply: "build", ...plugin };
 }
 
 function getFormat(filename: string): Format {
