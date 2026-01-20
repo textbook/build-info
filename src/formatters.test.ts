@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { JSDOM } from "jsdom";
 
-import { Formatter, FORMATTERS } from "./formatters.js";
+import { type Formatter, FORMATTERS } from "./formatters.js";
 
 describe("formatters", () => {
 	describe("HtmlFormatter", () => {

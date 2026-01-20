@@ -1,4 +1,4 @@
-import { Line, Source } from "../index.js";
+import type { Line, Source } from "../index.js";
 
 import Env from "./env.js";
 

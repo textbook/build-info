@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import getConfig from "./config.js";
-import { Formatter, FORMATTERS } from "./formatters.js";
+import { type Formatter, FORMATTERS } from "./formatters.js";
 import BuildInfo, { type Source } from "./index.js";
 import { getPackageProperty } from "./package.js";
 import { ConsoleSink, FileSink, type Sink } from "./sinks.js";

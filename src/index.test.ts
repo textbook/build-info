@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import BuildInfo, { Line } from "./index.js";
+import BuildInfo, { type Line } from "./index.js";
 
 const bar: Line = { content: "bar", label: "bar", name: "bar" };
 const foo: Line = { content: "foo", label: "foo", name: "foo" };
