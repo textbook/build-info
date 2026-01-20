@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import GitHubActions from "./actions.js";
+import GitHubActions from "./actions.ts";
 
 describe("GitHub Actions", () => {
 	it("does not apply if not running in GitHub Actions", () => {

@@ -1,4 +1,4 @@
-import { CircleCI, Clock, Git, GitHubActions, Heroku, Netlify, User } from "./sources/index.js";
+import { CircleCI, Clock, Git, GitHubActions, Heroku, Netlify, User } from "./sources/index.ts";
 
 export interface Line {
 	content: string;
@@ -23,7 +23,11 @@ const ALL_SOURCES: Source[] = [
 ];
 
 export default class BuildInfo implements Source {
-	constructor(private readonly sources: Source[] = ALL_SOURCES) {}
+	private readonly sources: Source[];
+
+	constructor(sources: Source[] = ALL_SOURCES) {
+		this.sources = sources;
+	}
 
 	async lines(): Promise<Line[]> {
 		const lines = [];

@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import sinon from "sinon";
 
-import User from "./user.js";
+import User from "./user.ts";
 
 describe("User", () => {
 	it("returns the result from whoami", async () => {

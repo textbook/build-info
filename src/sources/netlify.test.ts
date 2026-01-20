@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import Netlify from "./netlify.js";
+import Netlify from "./netlify.ts";
 
 describe("Netlify", () => {
 	it("only applies if running in Netlify", () => {

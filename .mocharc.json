@@ -2,6 +2,5 @@
   "$schema": "https://json.schemastore.org/mocharc.json",
   "extension": "ts",
   "failZero": true,
-  "require": "bin/register-ts-node.js",
   "spec": "src/**/*.test.ts"
 }

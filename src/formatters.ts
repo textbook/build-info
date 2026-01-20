@@ -1,4 +1,4 @@
-import { type Line } from "./index.js";
+import { type Line } from "./index.ts";
 
 export interface Formatter {
 	format(data: Line[]): string;

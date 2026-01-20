@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import Clock from "./clock.js";
+import Clock from "./clock.ts";
 
 describe("Clock", () => {
 	it("returns the time in ISO format", () => {

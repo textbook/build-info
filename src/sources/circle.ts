@@ -1,6 +1,6 @@
-import type { Line, Source } from "../index.js";
+import type { Line, Source } from "../index.ts";
 
-import Env from "./env.js";
+import Env from "./env.ts";
 
 export default class CircleCI extends Env implements Source {
 	applies(): boolean {

@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import getConfig from "./config.js";
+import getConfig from "./config.ts";
 
 describe("config", () => {
 	describe("--output", () => {

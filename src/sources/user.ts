@@ -1,6 +1,6 @@
-import type { Line, Source } from "../index.js";
+import type { Line, Source } from "../index.ts";
 
-import { Cmd } from "./cmd.js";
+import { Cmd } from "./cmd.ts";
 
 export default class User extends Cmd implements Source {
 	async lines(): Promise<Line[]> {

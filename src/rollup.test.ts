@@ -3,7 +3,7 @@ import { JSDOM } from "jsdom";
 import type { EmitFile, EmittedAsset, PluginContext } from "rollup";
 import sinon, { type SinonStub } from "sinon";
 
-import buildInfo from "./rollup.js";
+import buildInfo from "./rollup.ts";
 
 type StubOf<T extends (...args: never[]) => unknown> = SinonStub<Parameters<T>, ReturnType<T>>;
 

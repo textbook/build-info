@@ -6,7 +6,11 @@ export interface Sink {
 }
 
 export class ConsoleSink implements Sink {
-	constructor(private readonly logger: Pick<Console, "log"> = console) {}
+	private readonly logger: Pick<Console, "log">;
+
+	constructor(logger: Pick<Console, "log"> = console) {
+		this.logger = logger;
+	}
 
 	// eslint-disable-next-line @typescript-eslint/require-await -- Promise required for the interface
 	async write(data: string): Promise<void> {
@@ -15,7 +19,13 @@ export class ConsoleSink implements Sink {
 }
 
 export class FileSink implements Sink {
-	constructor(private readonly filename: string, private readonly console: Sink = new ConsoleSink()) {}
+	private readonly filename: string;
+	private readonly console: Sink;
+
+	constructor(filename: string, console: Sink = new ConsoleSink()) {
+		this.filename = filename;
+		this.console = console;
+	}
 
 	async write(data: string): Promise<void> {
 		if (this.filename === "-") {

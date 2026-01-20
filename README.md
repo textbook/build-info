@@ -129,9 +129,9 @@ The following scripts are provided to aid development:
 
 - `npm run lint`: Applies linting using [ESLint]
 
-- `npm run dev`: Runs the app without building it first (using [ts-node])
+- `npm run dev`: Runs the app without building it first and restarts on changes
 
-- `npm run test`: Runs tests using [Mocha] (plus [ts-node], [Chai] and [Sinon])
+- `npm run test`: Runs tests using [Mocha], [Chai] and [Sinon])
 
     - `npm run test:coverage`: Runs the tests with coverage using [c8]
 
@@ -149,5 +149,4 @@ The following scripts are provided to aid development:
 [sinon]: https://sinonjs.org/
 [sonar-badge]: https://sonarcloud.io/api/project_badges/measure?project=textbook_build-info&metric=sqale_rating
 [sonar-link]: https://sonarcloud.io/summary/new_code?id=textbook_build-info
-[ts-node]: https://typestrong.org/ts-node/
 [typescript]: https://www.typescriptlang.org/

@@ -3,7 +3,7 @@ import { fileURLToPath } from "node:url";
 
 import { expect } from "chai";
 
-import { getPackageFile, getPackageProperty } from "./package.js";
+import { getPackageFile, getPackageProperty } from "./package.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const fixturePath = join(__dirname, "package.fixture.json");

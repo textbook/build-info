@@ -3,8 +3,8 @@ import { type ExecException } from "node:child_process";
 import { expect } from "chai";
 import sinon from "sinon";
 
-import type { Run } from "./cmd.js";
-import Git from "./git.js";
+import type { Run } from "./cmd.ts";
+import Git from "./git.ts";
 
 describe("Git", () => {
 	it("gets the git status", async () => {

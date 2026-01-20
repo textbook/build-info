@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import Heroku from "./heroku.js";
+import Heroku from "./heroku.ts";
 
 describe("Heroku", () => {
 	it("applies if running in Heroku", () => {

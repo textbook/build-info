@@ -1,6 +1,6 @@
 import { parseArgs } from "node:util";
 
-import { type Format, FORMATTERS } from "./formatters.js";
+import { type Format, FORMATTERS } from "./formatters.ts";
 
 interface Configuration {
 	format: Format;

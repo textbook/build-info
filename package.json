@@ -25,8 +25,8 @@
   "scripts": {
     "prebuild": "rimraf lib/",
     "build": "tsc --project ./tsconfig.build.json",
+    "dev": "node --watch src/cli.ts",
     "pree2e": "npm run build",
-    "dev": "node --import ./bin/register-ts-node.js src/cli.ts",
     "e2e": "npm run e2e:output && npm run e2e:stdout",
     "e2e:output": "npm run start -- -o 'out.txt'",
     "e2e:stdout": "node lib/cli.js > 'out.txt'",
@@ -73,7 +73,6 @@
     "rimraf": "^6.1.2",
     "rollup": "^4.55.2",
     "sinon": "^21.0.1",
-    "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.53.1"
   }

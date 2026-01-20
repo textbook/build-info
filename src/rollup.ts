@@ -2,9 +2,9 @@ import { parse } from "node:path";
 
 import type { Plugin, PluginContext } from "rollup";
 
-import { FORMATTERS, type Format } from "./formatters.js";
-import BuildInfo from "./index.js";
-import { getPackageFile } from "./package.js";
+import { FORMATTERS, type Format } from "./formatters.ts";
+import BuildInfo from "./index.ts";
+import { getPackageFile } from "./package.ts";
 
 export interface PluginOptions {
 	filename: string;

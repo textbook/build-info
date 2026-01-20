@@ -12,5 +12,9 @@ const runCommand: Run = async (command) => {
 };
 
 export abstract class Cmd {
-	constructor(protected run: Run = runCommand) {}
+	protected run: Run;
+
+	constructor(run: Run = runCommand) {
+		this.run = run;
+	}
 }

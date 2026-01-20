@@ -1,7 +1,11 @@
-import type { Line, Source } from "../index.js";
+import type { Line, Source } from "../index.ts";
 
 export default class Clock implements Source {
-	constructor(private readonly now: () => Date = (): Date => new Date()) {}
+	private readonly now: () => Date;
+
+	constructor(now: () => Date = (): Date => new Date()) {
+		this.now = now;
+	}
 
 	lines(): Line[] {
 		return [

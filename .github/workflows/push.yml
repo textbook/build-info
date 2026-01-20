@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: textbook/take-action@nodejs
         with:
-          node-version: 22
+          node-version: 24
       - run: npm run lint
       - run: npm run test:coverage
       - uses: actions/upload-artifact@v6
@@ -40,7 +40,7 @@ jobs:
       - uses: textbook/take-action@nodejs
         with:
           checkout: false
-          node-version: 22
+          node-version: 24
       - uses: actions/download-artifact@v7
         with:
           name: coverage-report
@@ -103,7 +103,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
       - uses: actions/download-artifact@v7
         with:
           name: package

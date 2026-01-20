@@ -1,3 +1,7 @@
 export default abstract class Env {
-	constructor(protected env: NodeJS.ProcessEnv = process.env) {}
+	env: NodeJS.ProcessEnv;
+
+	constructor(env: NodeJS.ProcessEnv = process.env) {
+		this.env = env;
+	}
 }

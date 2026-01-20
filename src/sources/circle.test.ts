@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import CircleCI from "./circle.js";
+import CircleCI from "./circle.ts";
 
 describe("CircleCI", () => {
 	it("applies if running in CircleCI", () => {
