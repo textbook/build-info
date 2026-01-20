@@ -32,6 +32,7 @@
     "e2e:stdout": "node lib/cli.js > 'out.txt'",
     "lint": "eslint .",
     "start": "node lib/cli.js",
+    "ship": "npm run lint && npm run test:coverage && npm run e2e",
     "test": "mocha",
     "test:coverage": "c8 npm run test",
     "test:mutation": "stryker run"
