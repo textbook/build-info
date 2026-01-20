@@ -11,10 +11,10 @@ export interface PluginOptions {
 	format?: Format;
 }
 
-export interface BuildInfoPlugin {
+export interface BuildInfoPlugin extends Plugin {
 	name: string;
 	version: string;
-	buildEnd(this: PluginContext): Promise<void>;
+	buildEnd(this: PluginContext, err?: Error): Promise<void>;
 	apply: "build";
 }
 
@@ -24,7 +24,10 @@ export default function buildInfo({ filename, format = getFormat(filename) }: Pl
 	const plugin = {
 		name,
 		version,
-		async buildEnd() {
+		async buildEnd(err?: Error) {
+			if (err) {
+				return;
+			}
 			const formatter = new FORMATTERS[format]();
 			const source = new BuildInfo();
 			const lines = await source.lines();
