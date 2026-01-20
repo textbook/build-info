@@ -107,7 +107,5 @@ jobs:
       - uses: actions/download-artifact@v7
         with:
           name: package
-      - run: npm config set '//registry.npmjs.org/:_authToken' "${NPM_AUTH_TOKEN}"
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - run: npm install --global npm@latest
       - run: npm publish --provenance package.tgz
