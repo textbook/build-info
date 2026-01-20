@@ -52,7 +52,7 @@
   },
   "homepage": "https://github.com/textbook/build-info#readme",
   "devDependencies": {
-    "@codeyourfuture/eslint-config-standard": "^7.0.2",
+    "@codeyourfuture/eslint-config-standard": "^8.0.0",
     "@stryker-mutator/core": "^9.0.1",
     "@stryker-mutator/mocha-runner": "^9.4.0",
     "@stryker-mutator/typescript-checker": "^9.4.0",
