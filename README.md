@@ -119,7 +119,7 @@ even-numbered versions of Node (currently 18, 20 and 22) in Ubuntu (22.04) and W
 ## Development
 
 Development requires Node ^22.18 || >=24, where Node can handle [ESM][node-esm] and [TypeScript][node-ts] correctly.
-Node ^22.11 can also work, with `--experimental-strip-types` explicitly enabled (e.g. using `NODE_OPTIONS`).
+Node ^22.12 can also work, with `--experimental-strip-types` explicitly enabled (e.g. using `NODE_OPTIONS`).
 
 Clone the repository, then install the dependencies using `npm install` or `npm ci`.
 
