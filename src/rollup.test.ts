@@ -62,7 +62,7 @@ describe("Rollup plugin", () => {
 		const plugin = buildInfo({ filename: "test.txt" });
 		const ctx = createTestContext();
 		await plugin.buildEnd.call(ctx.context, new Error("oh no!"));
-		expect(ctx.emitFile.callCount).to.eq(0);
+		expect(ctx.emitFile.callCount).to.equal(0);
 	});
 });
 
