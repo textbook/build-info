@@ -111,12 +111,15 @@ export default defineConfig({
 
 - `format` (optional): override extension detection, one of `"html"`, `"json"` or `"text"`
 
-### Compatibility
+## Compatibility
 
 The emitted code targets Node from at least 18.3 (see `engines` field in `package.json`). It is tested on the latest
 even-numbered versions of Node (currently 18, 20 and 22) in Ubuntu (22.04) and Windows (Server 2022).
 
 ## Development
+
+Development requires Node ^22.18 || >=24, where Node can handle [ESM][node-esm] and [TypeScript][node-ts] correctly.
+Node ^22.11 can also work, with `--experimental-strip-types` explicitly enabled (e.g. using `NODE_OPTIONS`).
 
 Clone the repository, then install the dependencies using `npm install` or `npm ci`.
 
@@ -143,6 +146,8 @@ The following scripts are provided to aid development:
 [chai]: https://www.chaijs.com/
 [eslint]: https://eslint.org/
 [mocha]: https://mochajs.org/
+[node-esm]: https://nodejs.org/api/esm.html
+[node-ts]: https://nodejs.org/en/learn/typescript/run-natively
 [npm-badge]: https://img.shields.io/npm/v/@textbook/build-info?logo=npm&color=blue
 [npm-link]: https://www.npmjs.com/package/@textbook/build-info
 [npx]: https://docs.npmjs.com/cli/v8/commands/npx
