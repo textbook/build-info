@@ -37,8 +37,8 @@ describe("config", () => {
 		});
 
 		it("only includes a single value", () => {
-			const options = getConfig(["-o", "json", "-o", "text"]);
-			expect(options.output).to.equal("text");
+			const options = getConfig(["-f", "json", "-f", "text"]);
+			expect(options.format).to.equal("text");
 		});
 
 		it("handles the option not being provided at all", () => {
