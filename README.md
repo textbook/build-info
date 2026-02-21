@@ -134,7 +134,7 @@ The following scripts are provided to aid development:
 
 - `npm run dev`: Runs the app without building it first and restarts on changes
 
-- `npm run test`: Runs tests using [Mocha], [Chai] and [Sinon])
+- `npm run test`: Runs tests using [Mocha], [Chai] and [Sinon]
 
     - `npm run test:coverage`: Runs the tests with coverage using [c8]
 
