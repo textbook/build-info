@@ -12,7 +12,7 @@ const runCommand: Run = async (command) => {
 };
 
 export abstract class Cmd {
-	protected run: Run;
+	protected readonly run: Run;
 
 	constructor(run: Run = runCommand) {
 		this.run = run;
