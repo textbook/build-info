@@ -15,7 +15,7 @@ describe("Git", () => {
 
 		sinon.assert.calledTwice(run);
 		sinon.assert.calledWithExactly(run, "git status --porcelain");
-		sinon.assert.calledWithExactly(run, 'git show --no-patch  --format="%h %s"');
+		sinon.assert.calledWithExactly(run, 'git show --no-patch --format="%h %s"');
 	});
 
 	it("returns the output", async () => {
