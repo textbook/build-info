@@ -1,5 +1,5 @@
 import cyfConfig from "@codeyourfuture/eslint-config-standard";
-import commentsPlugin from "eslint-plugin-eslint-comments";
+import commentsPlugin from "@eslint-community/eslint-plugin-eslint-comments/configs";
 import mochaPlugin from "eslint-plugin-mocha";
 import tseslint from "typescript-eslint";
 
@@ -11,6 +11,7 @@ export default [
 	...cyfConfig.configs.standard,
 	...tseslint.configs.recommendedTypeChecked,
 	...tseslint.configs.stylisticTypeChecked,
+	commentsPlugin.recommended,
 	{
 		languageOptions: {
 			parserOptions: {
@@ -18,16 +19,12 @@ export default [
 				tsconfigRootDir: import.meta.dirname,
 			},
 		},
-		plugins: {
-			"eslint-comments": commentsPlugin,
-		},
 		rules: {
-			...commentsPlugin.configs.recommended.rules,
 			"@typescript-eslint/explicit-module-boundary-types": "error",
 			"@typescript-eslint/no-non-null-assertion": "error",
 			"@typescript-eslint/prefer-readonly": "error",
-			"eslint-comments/no-unused-disable": "error",
-			"eslint-comments/require-description": "error",
+			"@eslint-community/eslint-comments/no-unused-disable": "error",
+			"@eslint-community/eslint-comments/require-description": "error",
 			"no-extra-parens": "error",
 		},
 	},
