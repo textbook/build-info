@@ -74,12 +74,20 @@ describe("Rollup plugin", () => {
 	});
 });
 
-function createTestContext() {
+interface TestContext {
+	context: PluginContext;
+	emitFile: StubOf<EmitFile>;
+	getAsset(): EmittedAsset;
+	getSource(): string;
+}
+
+function createTestContext(): TestContext {
 	const emitFile: StubOf<EmitFile> = sinon.stub();
 	function getAsset() {
 		return emitFile.lastCall.args[0] as EmittedAsset;
 	}
 	return {
+		// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- false positive
 		context: { emitFile: emitFile as EmitFile } as PluginContext,
 		emitFile,
 		getAsset,

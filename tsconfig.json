@@ -3,6 +3,7 @@
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "erasableSyntaxOnly": true,
-    "rewriteRelativeImportExtensions": true
+    "rewriteRelativeImportExtensions": true,
+    "types": ["node", "mocha"],
   }
 }
