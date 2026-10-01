@@ -1,16 +1,13 @@
 import cyfConfig from "@codeyourfuture/eslint-config-standard";
 import commentsPlugin from "@eslint-community/eslint-plugin-eslint-comments/configs";
+import { defineConfig, globalIgnores } from "eslint/config";
 import mochaPlugin from "eslint-plugin-mocha";
 import tseslint from "typescript-eslint";
 
-/** @type {import("eslint").Linter.Config[]} */
-export default [
-	{
-		ignores: ["lib/"],
-	},
-	...cyfConfig.configs.standard,
-	...tseslint.configs.recommendedTypeChecked,
-	...tseslint.configs.stylisticTypeChecked,
+export default defineConfig(
+	cyfConfig.configs.standard,
+	tseslint.configs.recommendedTypeChecked,
+	tseslint.configs.stylisticTypeChecked,
 	commentsPlugin.recommended,
 	{
 		languageOptions: {
@@ -45,4 +42,5 @@ export default [
 			"mocha/valid-test-title": "off",
 		},
 	},
-];
+	globalIgnores([".stryker-tmp/", "lib/", "reports/"]),
+);
