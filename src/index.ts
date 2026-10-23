@@ -1,4 +1,4 @@
-import { CircleCI, Clock, Git, GitHubActions, Heroku, Netlify, User } from "./sources/index.ts";
+import { CircleCI, Clock, Git, GitHubActions, Heroku, Netlify, Node, User } from "./sources/index.ts";
 
 export interface Line {
 	content: string;
@@ -20,6 +20,7 @@ const ALL_SOURCES: Source[] = [
 	new GitHubActions(),
 	new CircleCI(),
 	new Netlify(),
+	new Node(),
 ];
 
 export default class BuildInfo implements Source {

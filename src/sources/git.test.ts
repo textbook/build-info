@@ -1,10 +1,9 @@
-import { type ExecException } from "node:child_process";
-
 import { expect } from "chai";
 import sinon from "sinon";
 
 import type { Run } from "./cmd.ts";
 import Git from "./git.ts";
+import { createError } from "./testUtils.ts";
 
 describe("Git", () => {
 	it("gets the git status", async () => {
@@ -63,12 +62,6 @@ describe("Git", () => {
 		expect(await cli.applies()).to.equal(false);
 	});
 });
-
-type ProcessException = ExecException & { stderr?: string; stdout?: string };
-
-function createError(overrides: Omit<ProcessException, keyof Error>): ProcessException {
-	return Object.assign(new Error(), { cmd: "", code: 1, killed: false, stderr: "", stdout: "", ...overrides });
-}
 
 function gitStub({ show, status }: { show: string; status: string }): Run {
 	return (command) => {

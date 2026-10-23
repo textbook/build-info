@@ -17,6 +17,7 @@ Generate build information for tracking deployments.
 - **GitHub Actions** - includes the build number and URL
 - **CircleCI** - includes the build number and URL
 - **Netlify** - includes the build number and URL
+- **Node** - includes the Node.js version
 
 ## Usage
 

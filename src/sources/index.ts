@@ -4,4 +4,5 @@ export { default as Clock } from "./clock.ts";
 export { default as Git } from "./git.ts";
 export { default as Heroku } from "./heroku.ts";
 export { default as Netlify } from "./netlify.ts";
+export { default as Node } from "./node.ts";
 export { default as User } from "./user.ts";
