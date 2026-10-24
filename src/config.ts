@@ -1,3 +1,4 @@
+import { relative, sep } from "node:path";
 import { parseArgs } from "node:util";
 
 interface Configuration {
@@ -17,5 +18,15 @@ export default function getConfig(args: string[]): Configuration {
 			version: { short: "v", type: "boolean" },
 		},
 	});
+	validate(values);
 	return values;
+}
+
+function validate({ output }: Configuration): void {
+	if (output) {
+		const relativePath = relative(process.cwd(), output);
+		if (relativePath.startsWith(`..${sep}`)) {
+			throw new Error("'--output' must be within the working directory");
+		}
+	}
 }
