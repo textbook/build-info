@@ -1,9 +1,7 @@
 import { parseArgs } from "node:util";
 
-import { type Format, FORMATTERS } from "./formatters.ts";
-
 interface Configuration {
-	format: Format;
+	format?: string;
 	help?: boolean;
 	output?: string;
 	version?: boolean;
@@ -19,13 +17,5 @@ export default function getConfig(args: string[]): Configuration {
 			version: { short: "v", type: "boolean" },
 		},
 	});
-	const { format = "text" } = values;
-	validateFormat(format);
-	return { ...values, format };
-}
-
-function validateFormat(format: string | undefined): asserts format is Format {
-	if (!format || !(format in FORMATTERS)) {
-		throw new Error(`Invalid format ${JSON.stringify(format)}`);
-	}
+	return values;
 }

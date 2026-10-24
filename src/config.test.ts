@@ -43,11 +43,7 @@ describe("config", () => {
 
 		it("handles the option not being provided at all", () => {
 			const options = getConfig([]);
-			expect(options.format).to.equal("text");
-		});
-
-		it("rejects unknown values", () => {
-			expect(() => getConfig(["--format", "banana"])).to.throw('Invalid format "banana"');
+			expect(options.format).to.be.undefined;
 		});
 	});
 

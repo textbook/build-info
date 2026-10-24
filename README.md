@@ -62,10 +62,20 @@ _(you can suppress the confirmation with the `--yes` flag)_.
 
 #### Arguments
 
-- `-f`/`--format` - the format to provide data in (one of `html`, `json`, `text`; default: `text`)
+- `-f`/`--format` - the format to provide data in (one of `html`, `json`, `text`)
 - `-h`/`--help` - show a help message and exit
 - `-o`/`--output` - the file to write data to
 - `-v`/`--version` - show the version and exit
+
+### Default format
+
+_Since v2.0.0._
+
+If you don't supply the `--format` argument, an appropriate format will be selected automatically:
+
+- `html` for HTML files (`.htm` or `.html`);
+- `json` for JSON files (`.json`); or
+- `text` for any other files, including stdout.
 
 ### Stdout
 

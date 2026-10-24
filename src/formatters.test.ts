@@ -1,9 +1,33 @@
 import { expect } from "chai";
 import { JSDOM } from "jsdom";
 
-import { type Formatter, FORMATTERS } from "./formatters.ts";
+import type { Format, Formatter } from "./formatters.ts";
+import { FORMATTERS, getFormatter } from "./formatters.ts";
 
 describe("formatters", () => {
+	describe("getFormatter", () => {
+		interface TestCase {
+			format: Format;
+			options: Parameters<typeof getFormatter>[0];
+			title: string;
+		}
+
+		// eslint-disable-next-line mocha/no-setup-in-suite -- parameterised test
+		([
+			{ title: "defaults to text", format: "text", options: {} },
+			{ title: "uses json for .json files", format: "json", options: { output: "out.json" } },
+			{ title: "uses html for .htm files", format: "html", options: { output: "out.htm" } },
+			{ title: "uses html for .html files", format: "html", options: { output: "out.html" } },
+			{ title: "uses text for .txt files", format: "text", options: { output: "out.txt" } },
+			{ title: "uses text for .csv files", format: "text", options: { output: "out.csv" } },
+			{ title: "allows explicit override", format: "json", options: { format: "json", output: "out.csv" } },
+		] as const satisfies readonly TestCase[]).forEach(({ format, options, title }) => {
+			it(title, () => {
+				expect(getFormatter(options)).to.be.instanceof(FORMATTERS[format]);
+			});
+		});
+	});
+
 	describe("HtmlFormatter", () => {
 		it("renders the data as a simple table", () => {
 			const formatter: Formatter = new FORMATTERS.html();

@@ -1,8 +1,6 @@
-import { parse } from "node:path";
-
 import type { Plugin, PluginContext } from "rollup";
 
-import { FORMATTERS, type Format } from "./formatters.ts";
+import { type Format, getFormatter } from "./formatters.ts";
 import BuildInfo from "./index.ts";
 import { getPackageFile } from "./package.ts";
 
@@ -20,7 +18,7 @@ export interface BuildInfoPlugin extends Plugin {
 
 const { name, version } = await getPackageFile();
 
-export default function buildInfo({ filename, format = getFormat(filename) }: PluginOptions): BuildInfoPlugin {
+export default function buildInfo({ filename, format }: PluginOptions): BuildInfoPlugin {
 	const plugin = {
 		name,
 		version,
@@ -28,22 +26,11 @@ export default function buildInfo({ filename, format = getFormat(filename) }: Pl
 			if (err) {
 				return;
 			}
-			const formatter = new FORMATTERS[format]();
+			const formatter = getFormatter({ format, output: filename });
 			const source = new BuildInfo();
 			const lines = await source.lines();
 			this.emitFile({ type: "asset", fileName: filename, source: formatter.format(lines) });
 		},
 	} satisfies Plugin;
 	return { apply: "build", ...plugin };
-}
-
-function getFormat(filename: string): Format {
-	switch (parse(filename).ext) {
-		case ".json":
-			return "json";
-		case ".html":
-			return "html";
-		default:
-			return "text";
-	}
 }
