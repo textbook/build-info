@@ -67,10 +67,10 @@ jobs:
           name: package
       - run: npm init --yes
       - run: npm install package.tgz
-      - run: npx buildinfo -o out.txt
-      - run: npx buildinfo --output out.txt
-      - run: npx buildinfo > out.txt
-      - run: npx buildinfo --format html --output out.html
+      - run: npx --no buildinfo -o out.txt
+      - run: npx --no buildinfo --output out.txt
+      - run: npx --no buildinfo > out.txt
+      - run: npx --no buildinfo --format html --output out.html
       - run: |
           type out.html
           type out.txt
