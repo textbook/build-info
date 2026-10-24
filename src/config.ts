@@ -1,4 +1,4 @@
-import { relative, sep } from "node:path";
+import { isAbsolute, relative, sep } from "node:path";
 import { parseArgs } from "node:util";
 
 interface Configuration {
@@ -25,7 +25,7 @@ export default function getConfig(args: string[]): Configuration {
 function validate({ output }: Configuration): void {
 	if (output) {
 		const relativePath = relative(process.cwd(), output);
-		if (relativePath.startsWith(`..${sep}`)) {
+		if (isAbsolute(relativePath) || relativePath.startsWith(`..${sep}`)) {
 			throw new Error("'--output' must be within the working directory");
 		}
 	}
