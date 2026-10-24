@@ -21,7 +21,7 @@ export class HtmlFormatter implements Formatter {
 	}
 
 	private multiline(value: string): string {
-		return value.split("\n").join("<br>");
+		return value.replaceAll("\n", "<br>");
 	}
 }
 
