@@ -70,9 +70,14 @@ jobs:
       - run: npx buildinfo -o out.txt
       - run: npx buildinfo --output out.txt
       - run: npx buildinfo > out.txt
-      - run: type out.txt
+      - run: npx buildinfo --output out.html
+      - run: |
+          type out.html
+          type out.txt
         if: contains(matrix.platform, 'windows')
-      - run: cat out.txt
+      - run: |
+          cat out.html
+          cat out.txt
         if: contains(matrix.platform, 'ubuntu')
   deploy-github:
     runs-on: ubuntu-latest
