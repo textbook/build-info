@@ -5,14 +5,14 @@ import { fileURLToPath } from "node:url";
 import { expect } from "chai";
 import { JSDOM } from "jsdom";
 import type { EmitFile, EmittedAsset, PluginContext } from "rollup";
-import sinon, { type SinonStub } from "sinon";
+import sinon from "sinon";
 
 import buildInfo from "./rollup.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const packagePath = await readFile(resolve(__dirname, "..", "package.json"), "utf-8");
 
-type StubOf<T extends (...args: never[]) => unknown> = SinonStub<Parameters<T>, ReturnType<T>>;
+type StubOf<T extends (...args: never[]) => unknown> = sinon.SinonStub<Parameters<T>, ReturnType<T>>;
 
 describe("Rollup plugin", () => {
 	it("exposes the package name and version", () => {

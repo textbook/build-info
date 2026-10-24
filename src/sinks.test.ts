@@ -2,11 +2,11 @@ import { readFile, rm } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 
 import { expect } from "chai";
-import sinon, { type SinonStub } from "sinon";
+import sinon from "sinon";
 
 import { ConsoleSink, FileSink, type Sink } from "./sinks.ts";
 
-type StubOf<T extends () => unknown> = SinonStub<Parameters<T>, ReturnType<T>>;
+type StubOf<T extends () => unknown> = sinon.SinonStub<Parameters<T>, ReturnType<T>>;
 
 describe("sinks", () => {
 	describe("ConsoleSink", () => {
