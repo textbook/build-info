@@ -31,12 +31,15 @@ export default class BuildInfo implements Source {
 	}
 
 	async lines(): Promise<Line[]> {
-		const lines = [];
-		for (const source of this.sources) {
-			if (await source.applies?.() !== false) {
-				lines.push(...await source.lines());
-			}
-		}
-		return lines;
+		return (
+			await Promise.all(
+				this.sources.map(async (source): Promise<Line[]> => {
+					if (await source.applies?.() !== false) {
+						return source.lines();
+					}
+					return [];
+				}),
+			)
+		).flat();
 	}
 }
