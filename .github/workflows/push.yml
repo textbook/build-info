@@ -107,5 +107,4 @@ jobs:
       - uses: actions/download-artifact@v8
         with:
           name: package
-      - run: npm install --global npm@latest
       - run: npm publish --provenance package.tgz
