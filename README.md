@@ -67,6 +67,13 @@ _(you can suppress the confirmation with the `--yes` flag)_.
 - `-o`/`--output` - the file to write data to
 - `-v`/`--version` - show the version and exit
 
+### Output limitations
+
+_Since v2.0.0._
+
+To prevent path injection attacks from overwriting arbitrary files, the `--output` must be within the working directory.
+If required, writing to files outside the working directory must be done explicitly with stdout redirection.
+
 ### Default format
 
 _Since v2.0.0._
